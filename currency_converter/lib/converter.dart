@@ -84,7 +84,7 @@ class _ConverterState extends State<Converter> {
                 onSubmitted: (String value) => _convert(),
                 decoration: InputDecoration(
                   hintText: 'Enter amount in ' + _fromCurrency,
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 6),
+                  // contentPadding: const EdgeInsets.symmetric(horizontal: 6),
                   errorText: _isValid ? null : 'Input a number',
                   suffixIcon: _controller.text.isNotEmpty
                       ? IconButton(
