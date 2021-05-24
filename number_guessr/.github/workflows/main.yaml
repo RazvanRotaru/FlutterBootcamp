@@ -1,38 +1,48 @@
 name: Check code quality
 on:
   push:
+    paths:
+      - number_guessr/*/**
 
 jobs:
   format-code:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
+      working-directory: number_guessr
       uses: actions/checkout@v2
 
       - name: Install flutter
+      working-directory: number_guessr
       uses: subosito/flutter-action@v1
         with:
           channel: 'stable' # or: 'beta', 'dev' or 'master'
 
       - name: Setup project
-        run: flutter pub get
+      working-directory: number_guessr
+      run: flutter pub get
 
       - name: Format code
-        run: flutter format -l 120 --set-exit-if-changed .
+      working-directory: number_guessr
+      run: flutter format -l 120 --set-exit-if-changed .
 
   analyze-code:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
+      working-directory: number_guessr
       uses: actions/checkout@v2
 
-        - name: Install flutter
+      - name: Install flutter
+      working-directory: number_guessr
       uses: subosito/flutter-action@v1
         with:
           channel: 'stable' # or: 'beta', 'dev' or 'master'
 
-          - name: Setup project
-            run: flutter pub get
+      - name: Setup project
+      working-directory:
+      number_guessrrun: flutter pub get
 
-          - name: Analyze code
-            run: flutter format analyze
+      - name: Analyze code
+      working-directory:
+      number_guessr  run: flutter format analyze
