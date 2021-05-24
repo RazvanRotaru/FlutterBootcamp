@@ -7,6 +7,9 @@ on:
 jobs:
   format-code:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: currency_converter
 
     steps:
       - name: Get code
@@ -18,16 +21,19 @@ jobs:
           channel: 'stable' # or: 'beta', 'dev' or 'master'
 
       - name: Setup project
-        working-directory: currency_converter
+#        working-directory: currency_converter
         run: flutter pub get
 
       - name: Format code
-        working-directory: currency_converter
+#        working-directory: currency_converter
         run: flutter format -l 120 --set-exit-if-changed .
 
 
   analyze-code:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: currency_converter
 
     steps:
       - name: Get code
@@ -39,9 +45,9 @@ jobs:
           channel: 'stable' # or: 'beta', 'dev' or 'master'
 
       - name: Setup project
-        working-directory: currency_converter
+#        working-directory: currency_converter
         run: flutter pub get
 
       - name: Analyze code
-        working-directory: currency_converter
+#        working-directory: currency_converter
         run: flutter format analyze
