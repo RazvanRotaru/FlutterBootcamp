@@ -10,40 +10,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
-      working-directory: number_guessr
-      uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Install flutter
-      working-directory: number_guessr
-      uses: subosito/flutter-action@v1
+        uses: subosito/flutter-action@v1
         with:
           channel: 'stable' # or: 'beta', 'dev' or 'master'
 
       - name: Setup project
-      working-directory: number_guessr
-      run: flutter pub get
+        working-directory: number_guessr
+        run: flutter pub get
 
       - name: Format code
-      working-directory: number_guessr
-      run: flutter format -l 120 --set-exit-if-changed .
-
-  analyze-code:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-      working-directory: number_guessr
-      uses: actions/checkout@v2
-
-      - name: Install flutter
-      working-directory: number_guessr
-      uses: subosito/flutter-action@v1
-        with:
-          channel: 'stable' # or: 'beta', 'dev' or 'master'
-
-      - name: Setup project
-      working-directory:
-      number_guessrrun: flutter pub get
-
-      - name: Analyze code
-      working-directory:
-      number_guessr  run: flutter format analyze
+        working-directory: number_guessr
+        run: flutter format -l 120 --set-exit-if-changed .
+#
+#  analyze-code:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Get code
+#        uses: actions/checkout@v2
+#
+#      - name: Install flutter
+#        uses: subosito/flutter-action@v1
+#          with:
+#            channel: 'stable' # or: 'beta', 'dev' or 'master'
+#
+#      - name: Setup project
+#        working-directory:
+#        number_guessrrun: flutter pub get
+#
+#      - name: Analyze code
+#        working-directory: number_guessr
+#        run: flutter format analyze
