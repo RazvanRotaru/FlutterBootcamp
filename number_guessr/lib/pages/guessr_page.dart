@@ -5,7 +5,6 @@ import 'package:number_guessr/forms/guessr_form.dart';
 
 import '../config.dart';
 
-//
 class MyInterval {
   const MyInterval({this.min = 0, this.max = 100});
 
