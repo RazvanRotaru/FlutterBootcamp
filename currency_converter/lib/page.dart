@@ -22,8 +22,7 @@ class _MainPageState extends State<MainPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.network(
-                  'https://image.flaticon.com/icons/png/512/2248/2248019.png'),
+              Image.network('https://image.flaticon.com/icons/png/512/2248/2248019.png'),
               SizedBox(height: 50),
               Converter(),
             ],

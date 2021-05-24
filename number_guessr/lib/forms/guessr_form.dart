@@ -102,18 +102,21 @@ class _GuesserFormState extends State<GuesserForm> {
       padding: const EdgeInsets.all(10.0),
       child: Column(
         children: <Widget>[
-          if (_hint == null) Container() else Column(
-                  children: <Widget>[
-                    Text(
-                      'You tried ${_ans!}.',
-                      style: _textStyle,
-                    ),
-                    Text(
-                      _hint!,
-                      style: _textStyle,
-                    ),
-                  ],
+          if (_hint == null)
+            Container()
+          else
+            Column(
+              children: <Widget>[
+                Text(
+                  'You tried ${_ans!}.',
+                  style: _textStyle,
                 ),
+                Text(
+                  _hint!,
+                  style: _textStyle,
+                ),
+              ],
+            ),
           Card(
             shape: RoundedRectangleBorder(
               side: BorderSide(

@@ -30,7 +30,7 @@ class _ConverterState extends State<Converter> {
   }
 
   bool _isNumeric(String str) {
-    if(str == null) {
+    if (str == null) {
       return false;
     }
     return double.tryParse(str) != null;
@@ -57,20 +57,13 @@ class _ConverterState extends State<Converter> {
 
   void _updateRate() async {
     print("updating rate...");
-    final ans = await http.get(
-        Uri.parse(
-            'https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml'),
-        headers: {
-          "Accept": "application/json",
-          "Access-Control_Allow_Origin": "*"
-        });
+    final ans = await http.get(Uri.parse('https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml'),
+        headers: {"Accept": "application/json", "Access-Control_Allow_Origin": "*"});
 
     print(ans);
 
-    Map<String, num> quotes = await Forex.fx(
-        quoteProvider: QuoteProvider.yahoo,
-        base: 'USD',
-        quotes: <String>['EUR', 'JPY']);
+    Map<String, num> quotes =
+        await Forex.fx(quoteProvider: QuoteProvider.yahoo, base: 'USD', quotes: <String>['EUR', 'JPY']);
 
     print('Number of quotes retrieved: ${quotes.keys.length}.');
     print('Exchange rate USDEUR: ${quotes['USDEUR']}.');
@@ -106,8 +99,7 @@ class _ConverterState extends State<Converter> {
                 ),
               ),
             ),
-            TextButton(
-                onPressed: () => _convert(), child: Text('Convert'))
+            TextButton(onPressed: () => _convert(), child: Text('Convert'))
           ],
         ),
         SizedBox(height: 50),

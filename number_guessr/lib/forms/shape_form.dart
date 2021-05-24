@@ -58,8 +58,8 @@ class _ShapeFormState extends State<ShapeForm> {
       if (cube > number) {
         return false;
       }
-        if (cube == number) {
-          return true;
+      if (cube == number) {
+        return true;
       }
     }
   }

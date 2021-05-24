@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:number_guessr/config.dart';
 
 class SimpleTextForm extends StatefulWidget {
-  const SimpleTextForm(
-      {Key? key,
-        this.onSuccess = _dummyFunc,
-        this.onError = _dummyFunc,
-        this.buttonText = 'Submit'})
+  const SimpleTextForm({Key? key, this.onSuccess = _dummyFunc, this.onError = _dummyFunc, this.buttonText = 'Submit'})
       : super(key: key);
 
   final void Function(int number) onSuccess;
@@ -14,7 +10,6 @@ class SimpleTextForm extends StatefulWidget {
   final String buttonText;
 
   static void _dummyFunc(int number) {}
-
 
   @override
   _SimpleTextFormState createState() => _SimpleTextFormState();
@@ -25,8 +20,7 @@ class _SimpleTextFormState extends State<SimpleTextForm> {
   final TextEditingController _controller = TextEditingController();
 
   bool isNumber(String? value) {
-    return ((value != null) && (int.tryParse(value) != null)) ||
-        (widget.buttonText == 'Reset');
+    return ((value != null) && (int.tryParse(value) != null)) || (widget.buttonText == 'Reset');
   }
 
   void submit() {
@@ -56,9 +50,7 @@ class _SimpleTextFormState extends State<SimpleTextForm> {
                 keyboardType: TextInputType.number,
                 controller: _controller,
                 validator: (String? value) {
-                  return !isNumber(value)
-                      ? 'Please enter a valid number!'
-                      : null;
+                  return !isNumber(value) ? 'Please enter a valid number!' : null;
                 },
               ),
             ),
