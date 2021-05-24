@@ -14,6 +14,7 @@ class _MainPageState extends State<MainPage> {
 
   final List<Widget> _pages = <Widget>[
     Center(
+      //
       // How does one scale a text with the screen size?
       child: FittedBox(
         fit: BoxFit.fitWidth,
