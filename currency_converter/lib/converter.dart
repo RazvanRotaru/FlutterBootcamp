@@ -102,11 +102,14 @@ class _ConverterState extends State<Converter> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            TextButton(onPressed: (){}, child: const Text('Update rate')),
-            if (_controller.text.isNotEmpty && _convertedAmount != 0) Text(
-                    _convertedAmount.toStringAsFixed(2) + ' ' + _toCurrency,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ) else Container(),
+            TextButton(onPressed: () {}, child: const Text('Update rate')),
+            if (_controller.text.isNotEmpty && _convertedAmount != 0)
+              Text(
+                _convertedAmount.toStringAsFixed(2) + ' ' + _toCurrency,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              )
+            else
+              Container(),
           ],
         ),
       ],
