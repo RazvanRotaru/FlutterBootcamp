@@ -4,6 +4,10 @@ on:
     paths:
       - number_guessr/*/**
 
+defaults:
+  run:
+    working-directory: number_guessr
+
 jobs:
   format-code:
     runs-on: ubuntu-latest
@@ -18,11 +22,9 @@ jobs:
           channel: 'stable' # or: 'beta', 'dev' or 'master'
 
       - name: Setup project
-        working-directory: number_guessr
         run: flutter pub get
 
       - name: Format code
-        working-directory: number_guessr
         run: flutter format -l 120 --set-exit-if-changed .
 
 

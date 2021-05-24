@@ -4,12 +4,13 @@ on:
     paths:
       - currency_converter/*/**
 
+defaults:
+  run:
+    working-directory: currency_converter
+
 jobs:
   format-code:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: currency_converter
 
     steps:
       - name: Get code
@@ -31,9 +32,6 @@ jobs:
 
   analyze-code:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: currency_converter
 
     steps:
       - name: Get code
