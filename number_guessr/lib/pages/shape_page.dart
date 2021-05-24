@@ -8,14 +8,14 @@ class ShapePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: <Widget>[
+      children: const <Widget>[
         Space,
-        const Text(
+        Text(
           'Input a number to see if it is square, cube or triangular',
           style: TextStyle(fontSize: 20),
         ),
         Space,
-        const ShapeForm(),
+        ShapeForm(),
         SmallSpace,
       ],
     );

@@ -1,14 +1,14 @@
-name: Check code quality for Numberino
+name: Check code quality for Currency Converter
 on:
   push:
     paths:
-      - number_guessr/*/**
+      - currency_converter/*/**
 
 jobs:
   format-code:
     runs-on: ubuntu-latest
     env:
-      working_directory: number_guessr
+      working-directory: currency_converter
 
     steps:
       - name: Get code
@@ -30,7 +30,7 @@ jobs:
   analyze-code:
     runs-on: ubuntu-latest
     env:
-      working_directory: number_guessr
+      working-directory: currency_converter
 
     steps:
       - name: Get code

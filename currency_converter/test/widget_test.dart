@@ -13,7 +13,7 @@ import 'package:untitled/main.dart';
 void main() {
   testWidgets('Conversion smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(const MyApp());
 
     // Tap the '+' icon and trigger a frame.
     await tester.enterText(find.byElementType(TextField), '100');

@@ -3,10 +3,11 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/currency_converter/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/currency_converter/build" />
       <excludeFolder url="file://$MODULE_DIR$/number_guessr/build" />
       <excludeFolder url="file://$MODULE_DIR$/number_guessr/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/currency_converter/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/currency_converter/build" />
+      <excludeFolder url="file://$MODULE_DIR$/currency_converter/.dart_tool" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
