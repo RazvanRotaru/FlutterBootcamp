@@ -11,6 +11,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
+
   final List<Widget> _pages = <Widget>[
     Center(
       // How does one scale a text with the screen size?
