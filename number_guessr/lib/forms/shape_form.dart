@@ -12,7 +12,7 @@ class ShapeForm extends StatefulWidget {
 
 class _ShapeFormState extends State<ShapeForm> {
   void onSuccess(int value) {
-    List<String> types = [];
+    final List<String> types = <String>[];
 
     if (isSquare(value)) {
       types.add('Square');
@@ -24,12 +24,12 @@ class _ShapeFormState extends State<ShapeForm> {
       types.add('Cube');
     }
 
-    String message = _typesToString(types);
+    final String message = _typesToString(types);
     _showDialog(value, message);
   }
 
   bool isSquare(int number) {
-    num root = sqrt(number);
+    final num root = sqrt(number);
 
     return root is int || root == root.roundToDouble();
   }
@@ -40,8 +40,12 @@ class _ShapeFormState extends State<ShapeForm> {
     for (int i = 1;; ++i) {
       sum += i;
 
-      if (sum > number) return false;
-      if (sum == number) return true;
+      if (sum > number) {
+        return false;
+      }
+      if (sum == number) {
+        return true;
+      }
     }
   }
 
@@ -51,23 +55,31 @@ class _ShapeFormState extends State<ShapeForm> {
     for (int i = 1;; ++i) {
       cube = i * i * i;
 
-      if (cube > number) return false;
-      if (cube == number) return true;
+      if (cube > number) {
+        return false;
+      }
+        if (cube == number) {
+          return true;
+      }
     }
   }
 
   String _typesToString(List<String> types) {
     print(types);
-    if (types.isEmpty) return 'neither Square or Cube or Triangular';
-    if (types.length == 1) return types[0];
+    if (types.isEmpty) {
+      return 'neither Square or Cube or Triangular';
+    }
+    if (types.length == 1) {
+      return types[0];
+    }
 
     return types.join(' and ');
   }
 
   void _showDialog(int number, String text) {
-    showDialog(
+    showDialog<Widget>(
         context: context,
-        builder: (_) => new AlertDialog(
+        builder: (_) => AlertDialog(
               title: Text('$number'),
               content: Text('Number $number is $text'),
             ));

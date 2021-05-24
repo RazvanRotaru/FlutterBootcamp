@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-const Space = SizedBox(height: 20);
-const SmallSpace = SizedBox(height: 10);
-const BigSpace = SizedBox(height: 30);
+const SizedBox Space = SizedBox(height: 20);
+const SizedBox SmallSpace = SizedBox(height: 10);
+const SizedBox BigSpace = SizedBox(height: 30);
 
 // Most of the photos do not work...
 const String ImageURL =

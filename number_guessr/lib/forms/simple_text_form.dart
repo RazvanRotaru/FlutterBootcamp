@@ -2,26 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:number_guessr/config.dart';
 
 class SimpleTextForm extends StatefulWidget {
+  const SimpleTextForm(
+      {Key? key,
+        this.onSuccess = _dummyFunc,
+        this.onError = _dummyFunc,
+        this.buttonText = 'Submit'})
+      : super(key: key);
+
   final void Function(int number) onSuccess;
   final void Function(int errCode) onError;
   final String buttonText;
 
   static void _dummyFunc(int number) {}
 
-  const SimpleTextForm(
-      {Key? key,
-      this.onSuccess: _dummyFunc,
-      this.onError: _dummyFunc,
-      this.buttonText: 'Submit'})
-      : super(key: key);
 
   @override
   _SimpleTextFormState createState() => _SimpleTextFormState();
 }
 
 class _SimpleTextFormState extends State<SimpleTextForm> {
-  final _form = GlobalKey<FormState>();
-  final _controller = TextEditingController();
+  final GlobalKey<FormState> _form = GlobalKey<FormState>();
+  final TextEditingController _controller = TextEditingController();
 
   bool isNumber(String? value) {
     return ((value != null) && (int.tryParse(value) != null)) ||
@@ -29,7 +30,7 @@ class _SimpleTextFormState extends State<SimpleTextForm> {
   }
 
   void submit() {
-    final isValid = _form.currentState?.validate();
+    final bool? isValid = _form.currentState?.validate();
     if (isValid == null || !isValid) {
       widget.onError(0);
     } else {
@@ -47,7 +48,7 @@ class _SimpleTextFormState extends State<SimpleTextForm> {
         padding: const EdgeInsets.all(10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
+          children: <Widget>[
             SmallSpace,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),

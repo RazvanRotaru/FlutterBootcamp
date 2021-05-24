@@ -5,10 +5,9 @@ import 'package:number_guessr/pages/guessr_page.dart';
 import '../config.dart';
 
 class GuesserForm extends StatefulWidget {
-  final MyInterval interval;
+  const GuesserForm({Key? key, this.interval = const MyInterval()}) : super(key: key);
 
-  const GuesserForm({Key? key, this.interval: const MyInterval()})
-      : super(key: key);
+  final MyInterval interval;
 
   @override
   _GuesserFormState createState() => _GuesserFormState();
@@ -21,7 +20,7 @@ class _GuesserFormState extends State<GuesserForm> {
   String? _hint;
   bool _guessed = false;
 
-  final _textStyle = TextStyle(
+  final TextStyle _textStyle = const TextStyle(
     fontSize: 30,
     color: Colors.grey,
   );
@@ -33,9 +32,9 @@ class _GuesserFormState extends State<GuesserForm> {
   }
 
   void onSuccess(int value) {
-    int diff = value - _number;
+    final int diff = value - _number;
     String? str;
-    String ans = '$value';
+    final String ans = '$value';
     if (diff != 0) {
       str = 'Try ';
       if (diff < 0) {
@@ -68,21 +67,21 @@ class _GuesserFormState extends State<GuesserForm> {
   }
 
   void _showDialog() {
-    showDialog(
+    showDialog<Widget>(
         context: context,
-        builder: (_) => new AlertDialog(
-              title: Text('You guessed right'),
+        builder: (_) => AlertDialog(
+              title: const Text('You guessed right'),
               content: Text('It was ${_ans!}'),
               actions: <Widget>[
                 ElevatedButton(
-                  child: Text('Try again!'),
+                  child: const Text('Try again!'),
                   onPressed: () {
                     Navigator.of(context).pop();
                     resetNumber();
                   },
                 ),
                 ElevatedButton(
-                  child: Text('OK'),
+                  child: const Text('OK'),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -102,11 +101,9 @@ class _GuesserFormState extends State<GuesserForm> {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
-        children: [
-          (_hint == null)
-              ? Container()
-              : Column(
-                  children: [
+        children: <Widget>[
+          if (_hint == null) Container() else Column(
+                  children: <Widget>[
                     Text(
                       'You tried ${_ans!}.',
                       style: _textStyle,
@@ -127,7 +124,7 @@ class _GuesserFormState extends State<GuesserForm> {
             elevation: 5.0,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
+              children: <Widget>[
                 Space,
                 Text(
                   'Try a number!',
@@ -137,7 +134,7 @@ class _GuesserFormState extends State<GuesserForm> {
                 SimpleTextForm(
                   onError: onError,
                   onSuccess: _guessed
-                      ? (x) {
+                      ? (int x) {
                           resetNumber();
                         }
                       : onSuccess,
