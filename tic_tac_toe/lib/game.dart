@@ -11,8 +11,8 @@ class Game extends StatefulWidget {
 }
 
 class _GameState extends State<Game> {
-  late List<int> elements = List<int>.generate(9, (int index) => -1);
-  int player = 0;
+  late List<int> elements;
+  late int player;
 
   bool checkLines({required int dx, required int dy}) {
     for (int i = 0; i < 3 * dx; i += dx) {
@@ -75,16 +75,14 @@ class _GameState extends State<Game> {
   void checkGame() {
     if (checkRows() || checkCols() || checkDiags()) {
       _showDialog(title: 'You won', content: 'Against yourself, psych');
-    }
-    else if (isFull()){
+    } else if (isFull()) {
       _showDialog(title: 'You lost', content: 'How did you managed that?!');
     }
   }
 
   void _reset() {
     setState(() {
-      player = 0;
-      elements = List<int>.filled(9, -1);
+      initState();
     });
   }
 
@@ -111,6 +109,13 @@ class _GameState extends State<Game> {
         ],
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    elements = List<int>.generate(9, (int index) => -1);
+    player = 0;
   }
 
   @override
