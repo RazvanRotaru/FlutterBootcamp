@@ -13,7 +13,6 @@ class Cell extends StatefulWidget {
 }
 
 class _CellState extends State<Cell> with SingleTickerProviderStateMixin {
-  late bool _isEmpty;
   Color _color = Colors.white;
   late AnimationController _controller;
 
@@ -24,7 +23,6 @@ class _CellState extends State<Cell> with SingleTickerProviderStateMixin {
   void setColor(int index) {
     setState(() {
       _color = getColor(index);
-      _isEmpty = false;
     });
   }
 
@@ -34,10 +32,6 @@ class _CellState extends State<Cell> with SingleTickerProviderStateMixin {
 
     if (widget.player >= 0) {
       setColor(widget.player);
-    } else {
-      setState(() {
-        _isEmpty = true;
-      });
     }
 
     _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 300));
@@ -56,13 +50,12 @@ class _CellState extends State<Cell> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (!_isEmpty) {
+        final int currPlayer = widget.onTap();
+        if (currPlayer < 0) {
           return;
         }
 
-        final int currPlayer = widget.onTap();
         setColor(currPlayer);
-
         if (!_controller.isCompleted) {
           _controller.forward();
         }
