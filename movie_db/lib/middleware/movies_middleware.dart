@@ -33,7 +33,9 @@ class MoviesMiddleware {
 
     try {
       final int page = action.randomPage;
+      print(page);
       final List<Movie> movies = await _api.getMovies(page: page);
+      print(movies.length);
       store.dispatch(GetMoviesSuccessful(movies));
     } catch (error) {
       store.dispatch(GetMoviesError(error));

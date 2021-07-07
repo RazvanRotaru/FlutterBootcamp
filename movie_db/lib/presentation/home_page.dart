@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:movie_db/actions/get_movies.dart';
 import 'package:movie_db/actions/reload_movies.dart';
+import 'package:movie_db/actions/select_movie.dart';
+import 'package:movie_db/container/error_container.dart';
 import 'package:movie_db/container/loading_container.dart';
 import 'package:movie_db/container/movies_container.dart';
 import 'package:movie_db/models/app_state.dart';
@@ -48,6 +50,12 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  void _selectMovie(int id) {
+    final Store<AppState> store = StoreProvider.of<AppState>(context);
+    store.dispatch(SelectMovie(movieId: id));
+    Navigator.pushNamed(context, '/movie_details');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,27 +79,38 @@ class _HomePageState extends State<HomePage> {
                   child: CircularProgressIndicator(),
                 );
               }
-              return GridView.builder(
-                controller: scrollController,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 0.69,
-                  crossAxisSpacing: 5,
-                  mainAxisSpacing: 5,
-                ),
-                itemCount: movies.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final Movie movie = movies[index];
+              return ErrorContainer(
+                builder: (BuildContext context, String? errMessage) {
+                  if (errMessage != null) {
+                    return ErrorWidget(errMessage);
+                  }
 
-                  return SizedBox(
-                      height: elementHeight,
-                      child: GridTile(
-                        child: Image.network(movie.mediumCoverImage),
-                        footer: GridTileBar(
-                          backgroundColor: Colors.black45,
-                          title: Text(movie.title),
-                        ),
-                      ));
+                  return GridView.builder(
+                    controller: scrollController,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      childAspectRatio: 0.69,
+                      crossAxisSpacing: 5,
+                      mainAxisSpacing: 5,
+                    ),
+                    itemCount: movies.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final Movie movie = movies[index];
+
+                      return GestureDetector(
+                        onTap: () => _selectMovie(movie.id),
+                        child: SizedBox(
+                            height: elementHeight,
+                            child: GridTile(
+                              child: Image.network(movie.mediumCoverImage),
+                              footer: GridTileBar(
+                                backgroundColor: Colors.black45,
+                                title: Text(movie.title),
+                              ),
+                            )),
+                      );
+                    },
+                  );
                 },
               );
             },

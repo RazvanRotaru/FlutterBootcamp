@@ -17,10 +17,10 @@ class MovieApi {
       throw StateError('Unsuccessful connection: ${resp.body}');
     }
 
-    await Future<int>.delayed(const Duration(seconds: 2));
+    // await Future<int>.delayed(const Duration(seconds: 2));
 
-    final Map<String, dynamic> body = jsonDecode(resp.body) as Map<String, dynamic>;
-    final Map<String, dynamic> data = body['data'] as Map<String, dynamic>;
+    final Map<dynamic, dynamic> body = jsonDecode(resp.body) as Map<dynamic, dynamic>;
+    final Map<dynamic, dynamic> data = body['data'] as Map<dynamic, dynamic>;
     final List<dynamic> movies = data['movies'] as List<dynamic>;
 
     return movies //

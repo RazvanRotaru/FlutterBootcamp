@@ -1,5 +1,6 @@
 import 'package:movie_db/actions/get_movies.dart';
 import 'package:movie_db/actions/reload_movies.dart';
+import 'package:movie_db/actions/select_movie.dart';
 import 'package:movie_db/models/app_state.dart';
 import 'package:redux/redux.dart';
 
@@ -12,6 +13,7 @@ Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
   TypedReducer<AppState, ReloadMovies>(_clearMovies),
   TypedReducer<AppState, GetMoviesSuccessful>(_getMoviesSuccessful),
   TypedReducer<AppState, GetMoviesError>(_getMoviesError),
+  TypedReducer<AppState, SelectMovie>(_selectMovie),
 ]);
 
 AppState _getMovies(AppState state, GetMoviesAction action) {
@@ -42,5 +44,11 @@ AppState _getMoviesError(AppState state, GetMoviesError action) {
     builder
       ..isLoading = false
       ..errMessage = '${action.err}';
+  });
+}
+
+AppState _selectMovie(AppState state, SelectMovie action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder.selectedMovieId = action.movieId;
   });
 }

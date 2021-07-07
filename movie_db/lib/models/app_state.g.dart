@@ -14,14 +14,14 @@ class _$AppState extends AppState {
   @override
   final String? errMessage;
   @override
-  final Movie? selectedMovie;
+  final int? selectedMovieId;
   @override
   final int currentPage;
 
   factory _$AppState([void Function(AppStateBuilder)? updates]) => (new AppStateBuilder()..update(updates)).build();
 
   _$AppState._(
-      {required this.movies, required this.isLoading, this.errMessage, this.selectedMovie, required this.currentPage})
+      {required this.movies, required this.isLoading, this.errMessage, this.selectedMovieId, required this.currentPage})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(movies, 'AppState', 'movies');
     BuiltValueNullFieldError.checkNotNull(isLoading, 'AppState', 'isLoading');
@@ -41,14 +41,14 @@ class _$AppState extends AppState {
         movies == other.movies &&
         isLoading == other.isLoading &&
         errMessage == other.errMessage &&
-        selectedMovie == other.selectedMovie &&
+        selectedMovieId == other.selectedMovieId &&
         currentPage == other.currentPage;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc($jc(0, movies.hashCode), isLoading.hashCode), errMessage.hashCode), selectedMovie.hashCode),
+        $jc($jc($jc($jc(0, movies.hashCode), isLoading.hashCode), errMessage.hashCode), selectedMovieId.hashCode),
         currentPage.hashCode));
   }
 
@@ -58,7 +58,7 @@ class _$AppState extends AppState {
           ..add('movies', movies)
           ..add('isLoading', isLoading)
           ..add('errMessage', errMessage)
-          ..add('selectedMovie', selectedMovie)
+          ..add('selectedMovieId', selectedMovieId)
           ..add('currentPage', currentPage))
         .toString();
   }
@@ -79,9 +79,9 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   String? get errMessage => _$this._errMessage;
   set errMessage(String? errMessage) => _$this._errMessage = errMessage;
 
-  MovieBuilder? _selectedMovie;
-  MovieBuilder get selectedMovie => _$this._selectedMovie ??= new MovieBuilder();
-  set selectedMovie(MovieBuilder? selectedMovie) => _$this._selectedMovie = selectedMovie;
+  int? _selectedMovieId;
+  int? get selectedMovieId => _$this._selectedMovieId;
+  set selectedMovieId(int? selectedMovieId) => _$this._selectedMovieId = selectedMovieId;
 
   int? _currentPage;
   int? get currentPage => _$this._currentPage;
@@ -95,7 +95,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _movies = $v.movies.toBuilder();
       _isLoading = $v.isLoading;
       _errMessage = $v.errMessage;
-      _selectedMovie = $v.selectedMovie?.toBuilder();
+      _selectedMovieId = $v.selectedMovieId;
       _currentPage = $v.currentPage;
       _$v = null;
     }
@@ -122,16 +122,13 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
               movies: movies.build(),
               isLoading: BuiltValueNullFieldError.checkNotNull(isLoading, 'AppState', 'isLoading'),
               errMessage: errMessage,
-              selectedMovie: _selectedMovie?.build(),
+              selectedMovieId: selectedMovieId,
               currentPage: BuiltValueNullFieldError.checkNotNull(currentPage, 'AppState', 'currentPage'));
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'movies';
         movies.build();
-
-        _$failedField = 'selectedMovie';
-        _selectedMovie?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError('AppState', _$failedField, e.toString());
       }

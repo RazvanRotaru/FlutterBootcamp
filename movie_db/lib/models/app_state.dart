@@ -24,7 +24,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
 
   String? get errMessage;
 
-  Movie? get selectedMovie;
+  int? get selectedMovieId;
 
   int get currentPage;
 }
