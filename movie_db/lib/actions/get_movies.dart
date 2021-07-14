@@ -2,7 +2,9 @@ import 'package:movie_db/models/movie.dart';
 
 class GetMoviesAction {}
 
-class GetMoviesSuccessful {
+class GetMoviesResponse {}
+
+class GetMoviesSuccessful extends GetMoviesResponse {
   GetMoviesSuccessful(this.movies);
 
   final List<Movie> movies;
@@ -13,7 +15,7 @@ class GetMoviesSuccessful {
   }
 }
 
-class GetMoviesError {
+class GetMoviesError extends GetMoviesResponse {
   GetMoviesError(this.err);
 
   final Object err;

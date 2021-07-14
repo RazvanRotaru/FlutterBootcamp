@@ -14,10 +14,10 @@ class MovieEpics {
         TypedEpic<AppState, GetMoviesAction>(_getMovies),
       ]);
 
-  Stream<Object> _getMovies(Stream<GetMoviesAction> actions, EpicStore<AppState> store) {
+  Stream<GetMoviesResponse> _getMovies(Stream<GetMoviesAction> actions, EpicStore<AppState> store) {
     return actions
         .asyncMap((GetMoviesAction action) => _movieApi.getMovies(page: store.state.currentPage))
-        .map<Object>((List<Movie> movies) => GetMoviesSuccessful(movies))
+        .map<GetMoviesResponse>((List<Movie> movies) => GetMoviesSuccessful(movies))
         .onErrorReturnWith((Object error, StackTrace stackTrace) => GetMoviesError(error));
   }
 }
