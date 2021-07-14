@@ -12,6 +12,9 @@
       <excludeFolder url="file://$MODULE_DIR$/tic_tac_toe/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/tic_tac_toe/build" />
       <excludeFolder url="file://$MODULE_DIR$/tic_tac_toe/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/movie_db/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/movie_db/build" />
+      <excludeFolder url="file://$MODULE_DIR$/movie_db/.pub" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -3,21 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:movie_db/actions/get_movies.dart';
 import 'package:movie_db/data/movie_api.dart';
-import 'package:movie_db/middleware/movies_middleware.dart';
+import 'package:movie_db/epics/movie_epic.dart';
 import 'package:movie_db/models/app_state.dart';
 import 'package:movie_db/presentation/details_page.dart';
 import 'package:movie_db/presentation/home_page.dart';
 import 'package:movie_db/reducer/reducer.dart';
 import 'package:redux/redux.dart';
+import 'package:redux_epics/redux_epics.dart';
 
 void main() {
-  final MovieApi moviesApi = MovieApi();
-  final MoviesMiddleware moviesMiddleware = MoviesMiddleware(api: moviesApi);
+  final MovieEpics movieEpic = MovieEpics(api: MovieApi());
 
   final Store<AppState> store = Store<AppState>(
     reducer,
     initialState: AppState(),
-    middleware: moviesMiddleware.middleware,
+    middleware: <Middleware<AppState>>[
+      EpicMiddleware<AppState>(movieEpic.epics),
+    ],
   );
 
   store.dispatch(GetMoviesAction());
