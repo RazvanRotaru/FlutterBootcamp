@@ -2,29 +2,30 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
+import 'package:redux_epics/redux_epics.dart';
 import 'package:weather_app/actions/get_location.dart';
 import 'package:weather_app/data/location_api.dart';
 import 'package:weather_app/data/weather_api.dart';
-import 'package:weather_app/middleware/location_middleware.dart';
-import 'package:weather_app/middleware/weather_middleware.dart';
+import 'package:weather_app/epics/location_epic.dart';
 import 'package:weather_app/redux/redux.dart';
 import 'package:weather_app/view/home_page.dart';
 import 'package:weather_app/view/location_page.dart';
 import 'package:weather_app/view/weather_page.dart';
 
+import 'epics/weather_epic.dart';
 import 'models/app_state.dart';
 
 void main() {
-  final LocationApi locationApi = LocationApi();
-  final LocationMiddleware locationMiddleware = LocationMiddleware(api: locationApi);
-
-  final WeatherApi weatherApi = WeatherApi();
-  final WeatherMiddleware weatherMiddleware = WeatherMiddleware(api: weatherApi);
+  final LocationEpic locationEpic = LocationEpic(api: LocationApi());
+  final WeatherEpic weatherEpic = WeatherEpic(api: WeatherApi());
 
   final Store<AppState> store = Store<AppState>(
     reducer,
     initialState: AppState(),
-    middleware: locationMiddleware.middleware + weatherMiddleware.middleware,
+    middleware: <Middleware<AppState>>[
+      EpicMiddleware<AppState>(locationEpic.epics),
+      EpicMiddleware<AppState>(weatherEpic.epics),
+    ],
   );
 
   store.dispatch(GetLocationAction());

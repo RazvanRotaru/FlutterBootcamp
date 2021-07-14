@@ -2,7 +2,9 @@ import 'package:weather_app/models/location.dart';
 
 class GetLocationAction {}
 
-class GetLocationSuccessful {
+class GetLocationResponse {}
+
+class GetLocationSuccessful extends GetLocationResponse {
   GetLocationSuccessful(this.location);
 
   final Location location;
@@ -13,7 +15,7 @@ class GetLocationSuccessful {
   }
 }
 
-class GetLocationError {
+class GetLocationError extends GetLocationResponse {
   GetLocationError(this.error);
 
   final Object error;

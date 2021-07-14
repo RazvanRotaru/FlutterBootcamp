@@ -2,7 +2,9 @@ import 'package:weather_app/models/current_weather.dart';
 
 class GetCurrentWeatherAction {}
 
-class GetCurrentWeatherSuccessful {
+class GetCurrentWeatherResponse {}
+
+class GetCurrentWeatherSuccessful extends GetCurrentWeatherResponse {
   GetCurrentWeatherSuccessful(this.weather);
 
   final CurrentWeather weather;
@@ -13,7 +15,7 @@ class GetCurrentWeatherSuccessful {
   }
 }
 
-class GetCurrentWeatherError {
+class GetCurrentWeatherError extends GetCurrentWeatherResponse {
   GetCurrentWeatherError(this.error);
 
   final Object error;
