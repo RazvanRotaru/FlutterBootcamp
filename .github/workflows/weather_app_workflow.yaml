@@ -1,6 +1,12 @@
-name: Check code quality for Numberino
+name: Check code quality for WeatherApp
 on:
   push:
+    paths:
+      - weather_app/*/**
+
+defaults:
+  run:
+    working-directory: weather_app
 
 jobs:
   format-code:
