@@ -20,15 +20,13 @@ class _$GetCurrentWeatherActionTearOff {
     return const GetCurrentWeatherActionStart();
   }
 
-  GetCurrentWeatherActionSuccessful successful(
-      {required CurrentWeather weather}) {
+  GetCurrentWeatherActionSuccessful successful({required CurrentWeather weather}) {
     return GetCurrentWeatherActionSuccessful(
       weather: weather,
     );
   }
 
-  GetCurrentWeatherActionError error(
-      {required Object error, required StackTrace stackTrace}) {
+  GetCurrentWeatherActionError error({required Object error, required StackTrace stackTrace}) {
     return GetCurrentWeatherActionError(
       error: error,
       stackTrace: stackTrace,
@@ -59,8 +57,7 @@ mixin _$GetCurrentWeatherAction {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(GetCurrentWeatherActionStart value) $default, {
-    required TResult Function(GetCurrentWeatherActionSuccessful value)
-        successful,
+    required TResult Function(GetCurrentWeatherActionSuccessful value) successful,
     required TResult Function(GetCurrentWeatherActionError value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -76,14 +73,12 @@ mixin _$GetCurrentWeatherAction {
 
 /// @nodoc
 abstract class $GetCurrentWeatherActionCopyWith<$Res> {
-  factory $GetCurrentWeatherActionCopyWith(GetCurrentWeatherAction value,
-          $Res Function(GetCurrentWeatherAction) then) =
+  factory $GetCurrentWeatherActionCopyWith(GetCurrentWeatherAction value, $Res Function(GetCurrentWeatherAction) then) =
       _$GetCurrentWeatherActionCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$GetCurrentWeatherActionCopyWithImpl<$Res>
-    implements $GetCurrentWeatherActionCopyWith<$Res> {
+class _$GetCurrentWeatherActionCopyWithImpl<$Res> implements $GetCurrentWeatherActionCopyWith<$Res> {
   _$GetCurrentWeatherActionCopyWithImpl(this._value, this._then);
 
   final GetCurrentWeatherAction _value;
@@ -94,23 +89,19 @@ class _$GetCurrentWeatherActionCopyWithImpl<$Res>
 /// @nodoc
 abstract class $GetCurrentWeatherActionStartCopyWith<$Res> {
   factory $GetCurrentWeatherActionStartCopyWith(
-          GetCurrentWeatherActionStart value,
-          $Res Function(GetCurrentWeatherActionStart) then) =
+          GetCurrentWeatherActionStart value, $Res Function(GetCurrentWeatherActionStart) then) =
       _$GetCurrentWeatherActionStartCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$GetCurrentWeatherActionStartCopyWithImpl<$Res>
-    extends _$GetCurrentWeatherActionCopyWithImpl<$Res>
+class _$GetCurrentWeatherActionStartCopyWithImpl<$Res> extends _$GetCurrentWeatherActionCopyWithImpl<$Res>
     implements $GetCurrentWeatherActionStartCopyWith<$Res> {
   _$GetCurrentWeatherActionStartCopyWithImpl(
-      GetCurrentWeatherActionStart _value,
-      $Res Function(GetCurrentWeatherActionStart) _then)
+      GetCurrentWeatherActionStart _value, $Res Function(GetCurrentWeatherActionStart) _then)
       : super(_value, (v) => _then(v as GetCurrentWeatherActionStart));
 
   @override
-  GetCurrentWeatherActionStart get _value =>
-      super._value as GetCurrentWeatherActionStart;
+  GetCurrentWeatherActionStart get _value => super._value as GetCurrentWeatherActionStart;
 }
 
 /// @nodoc
@@ -159,8 +150,7 @@ class _$GetCurrentWeatherActionStart implements GetCurrentWeatherActionStart {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(GetCurrentWeatherActionStart value) $default, {
-    required TResult Function(GetCurrentWeatherActionSuccessful value)
-        successful,
+    required TResult Function(GetCurrentWeatherActionSuccessful value) successful,
     required TResult Function(GetCurrentWeatherActionError value) error,
   }) {
     return $default(this);
@@ -188,24 +178,20 @@ abstract class GetCurrentWeatherActionStart implements GetCurrentWeatherAction {
 /// @nodoc
 abstract class $GetCurrentWeatherActionSuccessfulCopyWith<$Res> {
   factory $GetCurrentWeatherActionSuccessfulCopyWith(
-          GetCurrentWeatherActionSuccessful value,
-          $Res Function(GetCurrentWeatherActionSuccessful) then) =
+          GetCurrentWeatherActionSuccessful value, $Res Function(GetCurrentWeatherActionSuccessful) then) =
       _$GetCurrentWeatherActionSuccessfulCopyWithImpl<$Res>;
   $Res call({CurrentWeather weather});
 }
 
 /// @nodoc
-class _$GetCurrentWeatherActionSuccessfulCopyWithImpl<$Res>
-    extends _$GetCurrentWeatherActionCopyWithImpl<$Res>
+class _$GetCurrentWeatherActionSuccessfulCopyWithImpl<$Res> extends _$GetCurrentWeatherActionCopyWithImpl<$Res>
     implements $GetCurrentWeatherActionSuccessfulCopyWith<$Res> {
   _$GetCurrentWeatherActionSuccessfulCopyWithImpl(
-      GetCurrentWeatherActionSuccessful _value,
-      $Res Function(GetCurrentWeatherActionSuccessful) _then)
+      GetCurrentWeatherActionSuccessful _value, $Res Function(GetCurrentWeatherActionSuccessful) _then)
       : super(_value, (v) => _then(v as GetCurrentWeatherActionSuccessful));
 
   @override
-  GetCurrentWeatherActionSuccessful get _value =>
-      super._value as GetCurrentWeatherActionSuccessful;
+  GetCurrentWeatherActionSuccessful get _value => super._value as GetCurrentWeatherActionSuccessful;
 
   @override
   $Res call({
@@ -222,8 +208,7 @@ class _$GetCurrentWeatherActionSuccessfulCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetCurrentWeatherActionSuccessful
-    implements GetCurrentWeatherActionSuccessful {
+class _$GetCurrentWeatherActionSuccessful implements GetCurrentWeatherActionSuccessful {
   const _$GetCurrentWeatherActionSuccessful({required this.weather});
 
   @override
@@ -238,19 +223,16 @@ class _$GetCurrentWeatherActionSuccessful
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is GetCurrentWeatherActionSuccessful &&
-            (identical(other.weather, weather) ||
-                const DeepCollectionEquality().equals(other.weather, weather)));
+            (identical(other.weather, weather) || const DeepCollectionEquality().equals(other.weather, weather)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(weather);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(weather);
 
   @JsonKey(ignore: true)
   @override
-  $GetCurrentWeatherActionSuccessfulCopyWith<GetCurrentWeatherActionSuccessful>
-      get copyWith => _$GetCurrentWeatherActionSuccessfulCopyWithImpl<
-          GetCurrentWeatherActionSuccessful>(this, _$identity);
+  $GetCurrentWeatherActionSuccessfulCopyWith<GetCurrentWeatherActionSuccessful> get copyWith =>
+      _$GetCurrentWeatherActionSuccessfulCopyWithImpl<GetCurrentWeatherActionSuccessful>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -280,8 +262,7 @@ class _$GetCurrentWeatherActionSuccessful
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(GetCurrentWeatherActionStart value) $default, {
-    required TResult Function(GetCurrentWeatherActionSuccessful value)
-        successful,
+    required TResult Function(GetCurrentWeatherActionSuccessful value) successful,
     required TResult Function(GetCurrentWeatherActionError value) error,
   }) {
     return successful(this);
@@ -302,38 +283,33 @@ class _$GetCurrentWeatherActionSuccessful
   }
 }
 
-abstract class GetCurrentWeatherActionSuccessful
-    implements GetCurrentWeatherAction {
-  const factory GetCurrentWeatherActionSuccessful(
-      {required CurrentWeather weather}) = _$GetCurrentWeatherActionSuccessful;
+abstract class GetCurrentWeatherActionSuccessful implements GetCurrentWeatherAction {
+  const factory GetCurrentWeatherActionSuccessful({required CurrentWeather weather}) =
+      _$GetCurrentWeatherActionSuccessful;
 
   CurrentWeather get weather => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GetCurrentWeatherActionSuccessfulCopyWith<GetCurrentWeatherActionSuccessful>
-      get copyWith => throw _privateConstructorUsedError;
+  $GetCurrentWeatherActionSuccessfulCopyWith<GetCurrentWeatherActionSuccessful> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $GetCurrentWeatherActionErrorCopyWith<$Res> {
   factory $GetCurrentWeatherActionErrorCopyWith(
-          GetCurrentWeatherActionError value,
-          $Res Function(GetCurrentWeatherActionError) then) =
+          GetCurrentWeatherActionError value, $Res Function(GetCurrentWeatherActionError) then) =
       _$GetCurrentWeatherActionErrorCopyWithImpl<$Res>;
   $Res call({Object error, StackTrace stackTrace});
 }
 
 /// @nodoc
-class _$GetCurrentWeatherActionErrorCopyWithImpl<$Res>
-    extends _$GetCurrentWeatherActionCopyWithImpl<$Res>
+class _$GetCurrentWeatherActionErrorCopyWithImpl<$Res> extends _$GetCurrentWeatherActionCopyWithImpl<$Res>
     implements $GetCurrentWeatherActionErrorCopyWith<$Res> {
   _$GetCurrentWeatherActionErrorCopyWithImpl(
-      GetCurrentWeatherActionError _value,
-      $Res Function(GetCurrentWeatherActionError) _then)
+      GetCurrentWeatherActionError _value, $Res Function(GetCurrentWeatherActionError) _then)
       : super(_value, (v) => _then(v as GetCurrentWeatherActionError));
 
   @override
-  GetCurrentWeatherActionError get _value =>
-      super._value as GetCurrentWeatherActionError;
+  GetCurrentWeatherActionError get _value => super._value as GetCurrentWeatherActionError;
 
   @override
   $Res call({
@@ -357,8 +333,7 @@ class _$GetCurrentWeatherActionErrorCopyWithImpl<$Res>
 
 @Implements(ErrorAction)
 class _$GetCurrentWeatherActionError implements GetCurrentWeatherActionError {
-  const _$GetCurrentWeatherActionError(
-      {required this.error, required this.stackTrace});
+  const _$GetCurrentWeatherActionError({required this.error, required this.stackTrace});
 
   @override
   final Object error;
@@ -374,11 +349,9 @@ class _$GetCurrentWeatherActionError implements GetCurrentWeatherActionError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is GetCurrentWeatherActionError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)) &&
+            (identical(other.error, error) || const DeepCollectionEquality().equals(other.error, error)) &&
             (identical(other.stackTrace, stackTrace) ||
-                const DeepCollectionEquality()
-                    .equals(other.stackTrace, stackTrace)));
+                const DeepCollectionEquality().equals(other.stackTrace, stackTrace)));
   }
 
   @override
@@ -389,9 +362,8 @@ class _$GetCurrentWeatherActionError implements GetCurrentWeatherActionError {
 
   @JsonKey(ignore: true)
   @override
-  $GetCurrentWeatherActionErrorCopyWith<GetCurrentWeatherActionError>
-      get copyWith => _$GetCurrentWeatherActionErrorCopyWithImpl<
-          GetCurrentWeatherActionError>(this, _$identity);
+  $GetCurrentWeatherActionErrorCopyWith<GetCurrentWeatherActionError> get copyWith =>
+      _$GetCurrentWeatherActionErrorCopyWithImpl<GetCurrentWeatherActionError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -421,8 +393,7 @@ class _$GetCurrentWeatherActionError implements GetCurrentWeatherActionError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(GetCurrentWeatherActionStart value) $default, {
-    required TResult Function(GetCurrentWeatherActionSuccessful value)
-        successful,
+    required TResult Function(GetCurrentWeatherActionSuccessful value) successful,
     required TResult Function(GetCurrentWeatherActionError value) error,
   }) {
     return error(this);
@@ -443,17 +414,15 @@ class _$GetCurrentWeatherActionError implements GetCurrentWeatherActionError {
   }
 }
 
-abstract class GetCurrentWeatherActionError
-    implements GetCurrentWeatherAction, ErrorAction {
-  const factory GetCurrentWeatherActionError(
-      {required Object error,
-      required StackTrace stackTrace}) = _$GetCurrentWeatherActionError;
+abstract class GetCurrentWeatherActionError implements GetCurrentWeatherAction, ErrorAction {
+  const factory GetCurrentWeatherActionError({required Object error, required StackTrace stackTrace}) =
+      _$GetCurrentWeatherActionError;
 
   Object get error => throw _privateConstructorUsedError;
   StackTrace get stackTrace => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GetCurrentWeatherActionErrorCopyWith<GetCurrentWeatherActionError>
-      get copyWith => throw _privateConstructorUsedError;
+  $GetCurrentWeatherActionErrorCopyWith<GetCurrentWeatherActionError> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -470,8 +439,7 @@ class _$GetLocationActionTearOff {
     );
   }
 
-  GetLocationActionError error(
-      {required Object error, required StackTrace stackTrace}) {
+  GetLocationActionError error({required Object error, required StackTrace stackTrace}) {
     return GetLocationActionError(
       error: error,
       stackTrace: stackTrace,
@@ -518,14 +486,12 @@ mixin _$GetLocationAction {
 
 /// @nodoc
 abstract class $GetLocationActionCopyWith<$Res> {
-  factory $GetLocationActionCopyWith(
-          GetLocationAction value, $Res Function(GetLocationAction) then) =
+  factory $GetLocationActionCopyWith(GetLocationAction value, $Res Function(GetLocationAction) then) =
       _$GetLocationActionCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$GetLocationActionCopyWithImpl<$Res>
-    implements $GetLocationActionCopyWith<$Res> {
+class _$GetLocationActionCopyWithImpl<$Res> implements $GetLocationActionCopyWith<$Res> {
   _$GetLocationActionCopyWithImpl(this._value, this._then);
 
   final GetLocationAction _value;
@@ -535,17 +501,14 @@ class _$GetLocationActionCopyWithImpl<$Res>
 
 /// @nodoc
 abstract class $GetLocationActionStartCopyWith<$Res> {
-  factory $GetLocationActionStartCopyWith(GetLocationActionStart value,
-          $Res Function(GetLocationActionStart) then) =
+  factory $GetLocationActionStartCopyWith(GetLocationActionStart value, $Res Function(GetLocationActionStart) then) =
       _$GetLocationActionStartCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$GetLocationActionStartCopyWithImpl<$Res>
-    extends _$GetLocationActionCopyWithImpl<$Res>
+class _$GetLocationActionStartCopyWithImpl<$Res> extends _$GetLocationActionCopyWithImpl<$Res>
     implements $GetLocationActionStartCopyWith<$Res> {
-  _$GetLocationActionStartCopyWithImpl(GetLocationActionStart _value,
-      $Res Function(GetLocationActionStart) _then)
+  _$GetLocationActionStartCopyWithImpl(GetLocationActionStart _value, $Res Function(GetLocationActionStart) _then)
       : super(_value, (v) => _then(v as GetLocationActionStart));
 
   @override
@@ -626,23 +589,20 @@ abstract class GetLocationActionStart implements GetLocationAction {
 /// @nodoc
 abstract class $GetLocationActionSuccessfulCopyWith<$Res> {
   factory $GetLocationActionSuccessfulCopyWith(
-          GetLocationActionSuccessful value,
-          $Res Function(GetLocationActionSuccessful) then) =
+          GetLocationActionSuccessful value, $Res Function(GetLocationActionSuccessful) then) =
       _$GetLocationActionSuccessfulCopyWithImpl<$Res>;
   $Res call({Location location});
 }
 
 /// @nodoc
-class _$GetLocationActionSuccessfulCopyWithImpl<$Res>
-    extends _$GetLocationActionCopyWithImpl<$Res>
+class _$GetLocationActionSuccessfulCopyWithImpl<$Res> extends _$GetLocationActionCopyWithImpl<$Res>
     implements $GetLocationActionSuccessfulCopyWith<$Res> {
-  _$GetLocationActionSuccessfulCopyWithImpl(GetLocationActionSuccessful _value,
-      $Res Function(GetLocationActionSuccessful) _then)
+  _$GetLocationActionSuccessfulCopyWithImpl(
+      GetLocationActionSuccessful _value, $Res Function(GetLocationActionSuccessful) _then)
       : super(_value, (v) => _then(v as GetLocationActionSuccessful));
 
   @override
-  GetLocationActionSuccessful get _value =>
-      super._value as GetLocationActionSuccessful;
+  GetLocationActionSuccessful get _value => super._value as GetLocationActionSuccessful;
 
   @override
   $Res call({
@@ -674,20 +634,16 @@ class _$GetLocationActionSuccessful implements GetLocationActionSuccessful {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is GetLocationActionSuccessful &&
-            (identical(other.location, location) ||
-                const DeepCollectionEquality()
-                    .equals(other.location, location)));
+            (identical(other.location, location) || const DeepCollectionEquality().equals(other.location, location)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(location);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(location);
 
   @JsonKey(ignore: true)
   @override
-  $GetLocationActionSuccessfulCopyWith<GetLocationActionSuccessful>
-      get copyWith => _$GetLocationActionSuccessfulCopyWithImpl<
-          GetLocationActionSuccessful>(this, _$identity);
+  $GetLocationActionSuccessfulCopyWith<GetLocationActionSuccessful> get copyWith =>
+      _$GetLocationActionSuccessfulCopyWithImpl<GetLocationActionSuccessful>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -739,29 +695,24 @@ class _$GetLocationActionSuccessful implements GetLocationActionSuccessful {
 }
 
 abstract class GetLocationActionSuccessful implements GetLocationAction {
-  const factory GetLocationActionSuccessful({required Location location}) =
-      _$GetLocationActionSuccessful;
+  const factory GetLocationActionSuccessful({required Location location}) = _$GetLocationActionSuccessful;
 
   Location get location => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GetLocationActionSuccessfulCopyWith<GetLocationActionSuccessful>
-      get copyWith => throw _privateConstructorUsedError;
+  $GetLocationActionSuccessfulCopyWith<GetLocationActionSuccessful> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $GetLocationActionErrorCopyWith<$Res> {
-  factory $GetLocationActionErrorCopyWith(GetLocationActionError value,
-          $Res Function(GetLocationActionError) then) =
+  factory $GetLocationActionErrorCopyWith(GetLocationActionError value, $Res Function(GetLocationActionError) then) =
       _$GetLocationActionErrorCopyWithImpl<$Res>;
   $Res call({Object error, StackTrace stackTrace});
 }
 
 /// @nodoc
-class _$GetLocationActionErrorCopyWithImpl<$Res>
-    extends _$GetLocationActionCopyWithImpl<$Res>
+class _$GetLocationActionErrorCopyWithImpl<$Res> extends _$GetLocationActionCopyWithImpl<$Res>
     implements $GetLocationActionErrorCopyWith<$Res> {
-  _$GetLocationActionErrorCopyWithImpl(GetLocationActionError _value,
-      $Res Function(GetLocationActionError) _then)
+  _$GetLocationActionErrorCopyWithImpl(GetLocationActionError _value, $Res Function(GetLocationActionError) _then)
       : super(_value, (v) => _then(v as GetLocationActionError));
 
   @override
@@ -789,8 +740,7 @@ class _$GetLocationActionErrorCopyWithImpl<$Res>
 
 @Implements(ErrorAction)
 class _$GetLocationActionError implements GetLocationActionError {
-  const _$GetLocationActionError(
-      {required this.error, required this.stackTrace});
+  const _$GetLocationActionError({required this.error, required this.stackTrace});
 
   @override
   final Object error;
@@ -806,11 +756,9 @@ class _$GetLocationActionError implements GetLocationActionError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is GetLocationActionError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)) &&
+            (identical(other.error, error) || const DeepCollectionEquality().equals(other.error, error)) &&
             (identical(other.stackTrace, stackTrace) ||
-                const DeepCollectionEquality()
-                    .equals(other.stackTrace, stackTrace)));
+                const DeepCollectionEquality().equals(other.stackTrace, stackTrace)));
   }
 
   @override
@@ -822,8 +770,7 @@ class _$GetLocationActionError implements GetLocationActionError {
   @JsonKey(ignore: true)
   @override
   $GetLocationActionErrorCopyWith<GetLocationActionError> get copyWith =>
-      _$GetLocationActionErrorCopyWithImpl<GetLocationActionError>(
-          this, _$identity);
+      _$GetLocationActionErrorCopyWithImpl<GetLocationActionError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -874,15 +821,12 @@ class _$GetLocationActionError implements GetLocationActionError {
   }
 }
 
-abstract class GetLocationActionError
-    implements GetLocationAction, ErrorAction {
-  const factory GetLocationActionError(
-      {required Object error,
-      required StackTrace stackTrace}) = _$GetLocationActionError;
+abstract class GetLocationActionError implements GetLocationAction, ErrorAction {
+  const factory GetLocationActionError({required Object error, required StackTrace stackTrace}) =
+      _$GetLocationActionError;
 
   Object get error => throw _privateConstructorUsedError;
   StackTrace get stackTrace => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GetLocationActionErrorCopyWith<GetLocationActionError> get copyWith =>
-      throw _privateConstructorUsedError;
+  $GetLocationActionErrorCopyWith<GetLocationActionError> get copyWith => throw _privateConstructorUsedError;
 }
