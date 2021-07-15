@@ -1,7 +1,5 @@
-import 'package:movie_db/actions/get_movies.dart';
-import 'package:movie_db/actions/reload_movies.dart';
-import 'package:movie_db/actions/select_movie.dart';
-import 'package:movie_db/models/app_state.dart';
+import 'package:movie_db/actions/index.dart';
+import 'package:movie_db/models/index.dart';
 import 'package:redux/redux.dart';
 
 Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
@@ -10,10 +8,10 @@ Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
     return state;
   },
   TypedReducer<AppState, GetMoviesAction>(_getMovies),
-  TypedReducer<AppState, ReloadMovies>(_clearMovies),
-  TypedReducer<AppState, GetMoviesSuccessful>(_getMoviesSuccessful),
-  TypedReducer<AppState, GetMoviesError>(_getMoviesError),
-  TypedReducer<AppState, SelectMovie>(_selectMovie),
+  TypedReducer<AppState, ReloadMoviesAction>(_clearMovies),
+  TypedReducer<AppState, GetMoviesActionSuccessful>(_getMoviesSuccessful),
+  TypedReducer<AppState, GetMoviesActionError>(_getMoviesError),
+  TypedReducer<AppState, SelectMovieAction>(_selectMovie),
 ]);
 
 AppState _getMovies(AppState state, GetMoviesAction action) {
@@ -22,7 +20,7 @@ AppState _getMovies(AppState state, GetMoviesAction action) {
   });
 }
 
-AppState _clearMovies(AppState state, ReloadMovies action) {
+AppState _clearMovies(AppState state, ReloadMoviesAction action) {
   return state.rebuild((AppStateBuilder builder) {
     builder
       ..movies.clear()
@@ -30,7 +28,7 @@ AppState _clearMovies(AppState state, ReloadMovies action) {
   });
 }
 
-AppState _getMoviesSuccessful(AppState state, GetMoviesSuccessful action) {
+AppState _getMoviesSuccessful(AppState state, GetMoviesActionSuccessful action) {
   return state.rebuild((AppStateBuilder builder) {
     builder
       ..movies.addAll(action.movies)
@@ -39,16 +37,16 @@ AppState _getMoviesSuccessful(AppState state, GetMoviesSuccessful action) {
   });
 }
 
-AppState _getMoviesError(AppState state, GetMoviesError action) {
+AppState _getMoviesError(AppState state, GetMoviesActionError action) {
   return state.rebuild((AppStateBuilder builder) {
     builder
       ..isLoading = false
-      ..errMessage = '${action.err}';
+      ..errMessage = '${action.error}';
   });
 }
 
-AppState _selectMovie(AppState state, SelectMovie action) {
+AppState _selectMovie(AppState state, SelectMovieAction action) {
   return state.rebuild((AppStateBuilder builder) {
-    builder.selectedMovieId = action.movieId;
+    builder.selectedMovieId = action.id;
   });
 }

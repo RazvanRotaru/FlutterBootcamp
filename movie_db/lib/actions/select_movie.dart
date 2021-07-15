@@ -1,5 +1,6 @@
-class SelectMovie {
-  SelectMovie({required this.movieId});
+part of actions;
 
-  final int movieId;
+@freezed
+class SelectMovieAction with _$SelectMovieAction implements AppAction {
+  const factory SelectMovieAction({required int id}) = SelectMovieAction$;
 }

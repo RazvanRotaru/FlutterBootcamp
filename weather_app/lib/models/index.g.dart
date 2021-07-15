@@ -6,11 +6,13 @@ part of models;
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<CurrentWeather> _$currentWeatherSerializer = new _$CurrentWeatherSerializer();
+Serializer<CurrentWeather> _$currentWeatherSerializer =
+    new _$CurrentWeatherSerializer();
 Serializer<Location> _$locationSerializer = new _$LocationSerializer();
 Serializer<Weather> _$weatherSerializer = new _$WeatherSerializer();
 
-class _$CurrentWeatherSerializer implements StructuredSerializer<CurrentWeather> {
+class _$CurrentWeatherSerializer
+    implements StructuredSerializer<CurrentWeather> {
   @override
   final Iterable<Type> types = const [CurrentWeather, _$CurrentWeather];
   @override
@@ -23,36 +25,46 @@ class _$CurrentWeatherSerializer implements StructuredSerializer<CurrentWeather>
       'dt',
       serializers.serialize(object.time, specifiedType: const FullType(num)),
       'sunrise',
-      serializers.serialize(object.sunriseTime, specifiedType: const FullType(num)),
+      serializers.serialize(object.sunriseTime,
+          specifiedType: const FullType(num)),
       'sunset',
-      serializers.serialize(object.sunsetTime, specifiedType: const FullType(num)),
+      serializers.serialize(object.sunsetTime,
+          specifiedType: const FullType(num)),
       'temp',
       serializers.serialize(object.temp, specifiedType: const FullType(num)),
       'feels_like',
-      serializers.serialize(object.feelsLike, specifiedType: const FullType(num)),
+      serializers.serialize(object.feelsLike,
+          specifiedType: const FullType(num)),
       'humidity',
-      serializers.serialize(object.humidity, specifiedType: const FullType(num)),
+      serializers.serialize(object.humidity,
+          specifiedType: const FullType(num)),
       'dew_point',
-      serializers.serialize(object.dewPoint, specifiedType: const FullType(num)),
+      serializers.serialize(object.dewPoint,
+          specifiedType: const FullType(num)),
       'uvi',
       serializers.serialize(object.uvi, specifiedType: const FullType(num)),
       'clouds',
       serializers.serialize(object.clouds, specifiedType: const FullType(num)),
       'visibility',
-      serializers.serialize(object.visibility, specifiedType: const FullType(num)),
+      serializers.serialize(object.visibility,
+          specifiedType: const FullType(num)),
       'wind_speed',
-      serializers.serialize(object.windSpeed, specifiedType: const FullType(num)),
+      serializers.serialize(object.windSpeed,
+          specifiedType: const FullType(num)),
       'wind_deg',
       serializers.serialize(object.windDeg, specifiedType: const FullType(num)),
       'weather',
-      serializers.serialize(object.weather, specifiedType: const FullType(BuiltList, const [const FullType(Weather)])),
+      serializers.serialize(object.weather,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Weather)])),
     ];
 
     return result;
   }
 
   @override
-  CurrentWeather deserialize(Serializers serializers, Iterable<Object?> serialized,
+  CurrentWeather deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new CurrentWeatherBuilder();
 
@@ -63,44 +75,58 @@ class _$CurrentWeatherSerializer implements StructuredSerializer<CurrentWeather>
       final Object? value = iterator.current;
       switch (key) {
         case 'dt':
-          result.time = serializers.deserialize(value, specifiedType: const FullType(num)) as num;
+          result.time = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
           break;
         case 'sunrise':
-          result.sunriseTime = serializers.deserialize(value, specifiedType: const FullType(num)) as num;
+          result.sunriseTime = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
           break;
         case 'sunset':
-          result.sunsetTime = serializers.deserialize(value, specifiedType: const FullType(num)) as num;
+          result.sunsetTime = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
           break;
         case 'temp':
-          result.temp = serializers.deserialize(value, specifiedType: const FullType(num)) as num;
+          result.temp = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
           break;
         case 'feels_like':
-          result.feelsLike = serializers.deserialize(value, specifiedType: const FullType(num)) as num;
+          result.feelsLike = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
           break;
         case 'humidity':
-          result.humidity = serializers.deserialize(value, specifiedType: const FullType(num)) as num;
+          result.humidity = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
           break;
         case 'dew_point':
-          result.dewPoint = serializers.deserialize(value, specifiedType: const FullType(num)) as num;
+          result.dewPoint = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
           break;
         case 'uvi':
-          result.uvi = serializers.deserialize(value, specifiedType: const FullType(num)) as num;
+          result.uvi = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
           break;
         case 'clouds':
-          result.clouds = serializers.deserialize(value, specifiedType: const FullType(num)) as num;
+          result.clouds = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
           break;
         case 'visibility':
-          result.visibility = serializers.deserialize(value, specifiedType: const FullType(num)) as num;
+          result.visibility = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
           break;
         case 'wind_speed':
-          result.windSpeed = serializers.deserialize(value, specifiedType: const FullType(num)) as num;
+          result.windSpeed = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
           break;
         case 'wind_deg':
-          result.windDeg = serializers.deserialize(value, specifiedType: const FullType(num)) as num;
+          result.windDeg = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
           break;
         case 'weather':
           result.weather.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltList, const [const FullType(Weather)]))! as BuiltList<Object?>);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(Weather)]))!
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -127,39 +153,66 @@ class _$LocationSerializer implements StructuredSerializer<Location> {
     Object? value;
     value = object.country;
     if (value != null) {
-      result..add('country')..add(serializers.serialize(value, specifiedType: const FullType(String)));
+      result
+        ..add('country')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
     }
     value = object.countryCode;
     if (value != null) {
-      result..add('country_code')..add(serializers.serialize(value, specifiedType: const FullType(String)));
+      result
+        ..add('country_code')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
     }
     value = object.region;
     if (value != null) {
-      result..add('region')..add(serializers.serialize(value, specifiedType: const FullType(String)));
+      result
+        ..add('region')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
     }
     value = object.regionName;
     if (value != null) {
-      result..add('region_name')..add(serializers.serialize(value, specifiedType: const FullType(String)));
+      result
+        ..add('region_name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
     }
     value = object.city;
     if (value != null) {
-      result..add('city')..add(serializers.serialize(value, specifiedType: const FullType(String)));
+      result
+        ..add('city')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
     }
     value = object.zip;
     if (value != null) {
-      result..add('zip')..add(serializers.serialize(value, specifiedType: const FullType(String)));
+      result
+        ..add('zip')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
     }
     value = object.timezone;
     if (value != null) {
-      result..add('timezone')..add(serializers.serialize(value, specifiedType: const FullType(String)));
+      result
+        ..add('timezone')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
     }
     value = object.isp;
     if (value != null) {
-      result..add('isp')..add(serializers.serialize(value, specifiedType: const FullType(String)));
+      result
+        ..add('isp')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
     }
     value = object.querry;
     if (value != null) {
-      result..add('querry')..add(serializers.serialize(value, specifiedType: const FullType(String)));
+      result
+        ..add('querry')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
     }
     return result;
   }
@@ -176,37 +229,48 @@ class _$LocationSerializer implements StructuredSerializer<Location> {
       final Object? value = iterator.current;
       switch (key) {
         case 'country':
-          result.country = serializers.deserialize(value, specifiedType: const FullType(String)) as String?;
+          result.country = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'country_code':
-          result.countryCode = serializers.deserialize(value, specifiedType: const FullType(String)) as String?;
+          result.countryCode = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'region':
-          result.region = serializers.deserialize(value, specifiedType: const FullType(String)) as String?;
+          result.region = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'region_name':
-          result.regionName = serializers.deserialize(value, specifiedType: const FullType(String)) as String?;
+          result.regionName = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'city':
-          result.city = serializers.deserialize(value, specifiedType: const FullType(String)) as String?;
+          result.city = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'zip':
-          result.zip = serializers.deserialize(value, specifiedType: const FullType(String)) as String?;
+          result.zip = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'lat':
-          result.lat = serializers.deserialize(value, specifiedType: const FullType(num)) as num;
+          result.lat = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
           break;
         case 'lon':
-          result.lon = serializers.deserialize(value, specifiedType: const FullType(num)) as num;
+          result.lon = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
           break;
         case 'timezone':
-          result.timezone = serializers.deserialize(value, specifiedType: const FullType(String)) as String?;
+          result.timezone = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'isp':
-          result.isp = serializers.deserialize(value, specifiedType: const FullType(String)) as String?;
+          result.isp = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'querry':
-          result.querry = serializers.deserialize(value, specifiedType: const FullType(String)) as String?;
+          result.querry = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -230,7 +294,8 @@ class _$WeatherSerializer implements StructuredSerializer<Weather> {
       'main',
       serializers.serialize(object.main, specifiedType: const FullType(String)),
       'description',
-      serializers.serialize(object.description, specifiedType: const FullType(String)),
+      serializers.serialize(object.description,
+          specifiedType: const FullType(String)),
       'icon',
       serializers.serialize(object.icon, specifiedType: const FullType(String)),
     ];
@@ -250,16 +315,20 @@ class _$WeatherSerializer implements StructuredSerializer<Weather> {
       final Object? value = iterator.current;
       switch (key) {
         case 'id':
-          result.id = serializers.deserialize(value, specifiedType: const FullType(num)) as num;
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
           break;
         case 'main':
-          result.main = serializers.deserialize(value, specifiedType: const FullType(String)) as String;
+          result.main = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
         case 'description':
-          result.description = serializers.deserialize(value, specifiedType: const FullType(String)) as String;
+          result.description = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
         case 'icon':
-          result.icon = serializers.deserialize(value, specifiedType: const FullType(String)) as String;
+          result.icon = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -278,14 +347,21 @@ class _$AppState extends AppState {
   @override
   final bool isLoading;
 
-  factory _$AppState([void Function(AppStateBuilder)? updates]) => (new AppStateBuilder()..update(updates)).build();
+  factory _$AppState([void Function(AppStateBuilder)? updates]) =>
+      (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.location, this.currentWeather, this.errorMessage, required this.isLoading}) : super._() {
+  _$AppState._(
+      {this.location,
+      this.currentWeather,
+      this.errorMessage,
+      required this.isLoading})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(isLoading, 'AppState', 'isLoading');
   }
 
   @override
-  AppState rebuild(void Function(AppStateBuilder) updates) => (toBuilder()..update(updates)).build();
+  AppState rebuild(void Function(AppStateBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   AppStateBuilder toBuilder() => new AppStateBuilder()..replace(this);
@@ -302,8 +378,10 @@ class _$AppState extends AppState {
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc($jc(0, location.hashCode), currentWeather.hashCode), errorMessage.hashCode), isLoading.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, location.hashCode), currentWeather.hashCode),
+            errorMessage.hashCode),
+        isLoading.hashCode));
   }
 
   @override
@@ -325,8 +403,10 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   set location(LocationBuilder? location) => _$this._location = location;
 
   CurrentWeatherBuilder? _currentWeather;
-  CurrentWeatherBuilder get currentWeather => _$this._currentWeather ??= new CurrentWeatherBuilder();
-  set currentWeather(CurrentWeatherBuilder? currentWeather) => _$this._currentWeather = currentWeather;
+  CurrentWeatherBuilder get currentWeather =>
+      _$this._currentWeather ??= new CurrentWeatherBuilder();
+  set currentWeather(CurrentWeatherBuilder? currentWeather) =>
+      _$this._currentWeather = currentWeather;
 
   String? _errorMessage;
   String? get errorMessage => _$this._errorMessage;
@@ -370,7 +450,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
               location: _location?.build(),
               currentWeather: _currentWeather?.build(),
               errorMessage: errorMessage,
-              isLoading: BuiltValueNullFieldError.checkNotNull(isLoading, 'AppState', 'isLoading'));
+              isLoading: BuiltValueNullFieldError.checkNotNull(
+                  isLoading, 'AppState', 'isLoading'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -379,7 +460,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         _$failedField = 'currentWeather';
         _currentWeather?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError('AppState', _$failedField, e.toString());
+        throw new BuiltValueNestedFieldError(
+            'AppState', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -435,25 +517,34 @@ class _$CurrentWeather extends CurrentWeather {
       required this.weather})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(time, 'CurrentWeather', 'time');
-    BuiltValueNullFieldError.checkNotNull(sunriseTime, 'CurrentWeather', 'sunriseTime');
-    BuiltValueNullFieldError.checkNotNull(sunsetTime, 'CurrentWeather', 'sunsetTime');
+    BuiltValueNullFieldError.checkNotNull(
+        sunriseTime, 'CurrentWeather', 'sunriseTime');
+    BuiltValueNullFieldError.checkNotNull(
+        sunsetTime, 'CurrentWeather', 'sunsetTime');
     BuiltValueNullFieldError.checkNotNull(temp, 'CurrentWeather', 'temp');
-    BuiltValueNullFieldError.checkNotNull(feelsLike, 'CurrentWeather', 'feelsLike');
-    BuiltValueNullFieldError.checkNotNull(humidity, 'CurrentWeather', 'humidity');
-    BuiltValueNullFieldError.checkNotNull(dewPoint, 'CurrentWeather', 'dewPoint');
+    BuiltValueNullFieldError.checkNotNull(
+        feelsLike, 'CurrentWeather', 'feelsLike');
+    BuiltValueNullFieldError.checkNotNull(
+        humidity, 'CurrentWeather', 'humidity');
+    BuiltValueNullFieldError.checkNotNull(
+        dewPoint, 'CurrentWeather', 'dewPoint');
     BuiltValueNullFieldError.checkNotNull(uvi, 'CurrentWeather', 'uvi');
     BuiltValueNullFieldError.checkNotNull(clouds, 'CurrentWeather', 'clouds');
-    BuiltValueNullFieldError.checkNotNull(visibility, 'CurrentWeather', 'visibility');
-    BuiltValueNullFieldError.checkNotNull(windSpeed, 'CurrentWeather', 'windSpeed');
+    BuiltValueNullFieldError.checkNotNull(
+        visibility, 'CurrentWeather', 'visibility');
+    BuiltValueNullFieldError.checkNotNull(
+        windSpeed, 'CurrentWeather', 'windSpeed');
     BuiltValueNullFieldError.checkNotNull(windDeg, 'CurrentWeather', 'windDeg');
     BuiltValueNullFieldError.checkNotNull(weather, 'CurrentWeather', 'weather');
   }
 
   @override
-  CurrentWeather rebuild(void Function(CurrentWeatherBuilder) updates) => (toBuilder()..update(updates)).build();
+  CurrentWeather rebuild(void Function(CurrentWeatherBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
 
   @override
-  CurrentWeatherBuilder toBuilder() => new CurrentWeatherBuilder()..replace(this);
+  CurrentWeatherBuilder toBuilder() =>
+      new CurrentWeatherBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -485,7 +576,11 @@ class _$CurrentWeather extends CurrentWeather {
                             $jc(
                                 $jc(
                                     $jc(
-                                        $jc($jc($jc($jc(0, time.hashCode), sunriseTime.hashCode), sunsetTime.hashCode),
+                                        $jc(
+                                            $jc(
+                                                $jc($jc(0, time.hashCode),
+                                                    sunriseTime.hashCode),
+                                                sunsetTime.hashCode),
                                             temp.hashCode),
                                         feelsLike.hashCode),
                                     humidity.hashCode),
@@ -518,7 +613,8 @@ class _$CurrentWeather extends CurrentWeather {
   }
 }
 
-class CurrentWeatherBuilder implements Builder<CurrentWeather, CurrentWeatherBuilder> {
+class CurrentWeatherBuilder
+    implements Builder<CurrentWeather, CurrentWeatherBuilder> {
   _$CurrentWeather? _$v;
 
   num? _time;
@@ -570,7 +666,8 @@ class CurrentWeatherBuilder implements Builder<CurrentWeather, CurrentWeatherBui
   set windDeg(num? windDeg) => _$this._windDeg = windDeg;
 
   ListBuilder<Weather>? _weather;
-  ListBuilder<Weather> get weather => _$this._weather ??= new ListBuilder<Weather>();
+  ListBuilder<Weather> get weather =>
+      _$this._weather ??= new ListBuilder<Weather>();
   set weather(ListBuilder<Weather>? weather) => _$this._weather = weather;
 
   CurrentWeatherBuilder();
@@ -613,15 +710,24 @@ class CurrentWeatherBuilder implements Builder<CurrentWeather, CurrentWeatherBui
     try {
       _$result = _$v ??
           new _$CurrentWeather._(
-              time: BuiltValueNullFieldError.checkNotNull(time, 'CurrentWeather', 'time'),
-              sunriseTime: BuiltValueNullFieldError.checkNotNull(sunriseTime, 'CurrentWeather', 'sunriseTime'),
-              sunsetTime: BuiltValueNullFieldError.checkNotNull(sunsetTime, 'CurrentWeather', 'sunsetTime'),
-              temp: BuiltValueNullFieldError.checkNotNull(temp, 'CurrentWeather', 'temp'),
-              feelsLike: BuiltValueNullFieldError.checkNotNull(feelsLike, 'CurrentWeather', 'feelsLike'),
-              humidity: BuiltValueNullFieldError.checkNotNull(humidity, 'CurrentWeather', 'humidity'),
-              dewPoint: BuiltValueNullFieldError.checkNotNull(dewPoint, 'CurrentWeather', 'dewPoint'),
-              uvi: BuiltValueNullFieldError.checkNotNull(uvi, 'CurrentWeather', 'uvi'),
-              clouds: BuiltValueNullFieldError.checkNotNull(clouds, 'CurrentWeather', 'clouds'),
+              time: BuiltValueNullFieldError.checkNotNull(
+                  time, 'CurrentWeather', 'time'),
+              sunriseTime: BuiltValueNullFieldError.checkNotNull(
+                  sunriseTime, 'CurrentWeather', 'sunriseTime'),
+              sunsetTime: BuiltValueNullFieldError.checkNotNull(
+                  sunsetTime, 'CurrentWeather', 'sunsetTime'),
+              temp: BuiltValueNullFieldError.checkNotNull(
+                  temp, 'CurrentWeather', 'temp'),
+              feelsLike: BuiltValueNullFieldError.checkNotNull(
+                  feelsLike, 'CurrentWeather', 'feelsLike'),
+              humidity: BuiltValueNullFieldError.checkNotNull(
+                  humidity, 'CurrentWeather', 'humidity'),
+              dewPoint: BuiltValueNullFieldError.checkNotNull(
+                  dewPoint, 'CurrentWeather', 'dewPoint'),
+              uvi: BuiltValueNullFieldError.checkNotNull(
+                  uvi, 'CurrentWeather', 'uvi'),
+              clouds:
+                  BuiltValueNullFieldError.checkNotNull(clouds, 'CurrentWeather', 'clouds'),
               visibility: BuiltValueNullFieldError.checkNotNull(visibility, 'CurrentWeather', 'visibility'),
               windSpeed: BuiltValueNullFieldError.checkNotNull(windSpeed, 'CurrentWeather', 'windSpeed'),
               windDeg: BuiltValueNullFieldError.checkNotNull(windDeg, 'CurrentWeather', 'windDeg'),
@@ -632,7 +738,8 @@ class CurrentWeatherBuilder implements Builder<CurrentWeather, CurrentWeatherBui
         _$failedField = 'weather';
         weather.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError('CurrentWeather', _$failedField, e.toString());
+        throw new BuiltValueNestedFieldError(
+            'CurrentWeather', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -665,7 +772,8 @@ class _$Location extends Location {
   @override
   final String? querry;
 
-  factory _$Location([void Function(LocationBuilder)? updates]) => (new LocationBuilder()..update(updates)).build();
+  factory _$Location([void Function(LocationBuilder)? updates]) =>
+      (new LocationBuilder()..update(updates)).build();
 
   _$Location._(
       {this.country,
@@ -685,7 +793,8 @@ class _$Location extends Location {
   }
 
   @override
-  Location rebuild(void Function(LocationBuilder) updates) => (toBuilder()..update(updates)).build();
+  Location rebuild(void Function(LocationBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   LocationBuilder toBuilder() => new LocationBuilder()..replace(this);
@@ -716,7 +825,11 @@ class _$Location extends Location {
                     $jc(
                         $jc(
                             $jc(
-                                $jc($jc($jc($jc(0, country.hashCode), countryCode.hashCode), region.hashCode),
+                                $jc(
+                                    $jc(
+                                        $jc($jc(0, country.hashCode),
+                                            countryCode.hashCode),
+                                        region.hashCode),
                                     regionName.hashCode),
                                 city.hashCode),
                             zip.hashCode),
@@ -854,17 +967,25 @@ class _$Weather extends Weather {
   @override
   final String icon;
 
-  factory _$Weather([void Function(WeatherBuilder)? updates]) => (new WeatherBuilder()..update(updates)).build();
+  factory _$Weather([void Function(WeatherBuilder)? updates]) =>
+      (new WeatherBuilder()..update(updates)).build();
 
-  _$Weather._({required this.id, required this.main, required this.description, required this.icon}) : super._() {
+  _$Weather._(
+      {required this.id,
+      required this.main,
+      required this.description,
+      required this.icon})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(id, 'Weather', 'id');
     BuiltValueNullFieldError.checkNotNull(main, 'Weather', 'main');
-    BuiltValueNullFieldError.checkNotNull(description, 'Weather', 'description');
+    BuiltValueNullFieldError.checkNotNull(
+        description, 'Weather', 'description');
     BuiltValueNullFieldError.checkNotNull(icon, 'Weather', 'icon');
   }
 
   @override
-  Weather rebuild(void Function(WeatherBuilder) updates) => (toBuilder()..update(updates)).build();
+  Weather rebuild(void Function(WeatherBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   WeatherBuilder toBuilder() => new WeatherBuilder()..replace(this);
@@ -881,7 +1002,9 @@ class _$Weather extends Weather {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc($jc(0, id.hashCode), main.hashCode), description.hashCode), icon.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, id.hashCode), main.hashCode), description.hashCode),
+        icon.hashCode));
   }
 
   @override
@@ -944,9 +1067,12 @@ class WeatherBuilder implements Builder<Weather, WeatherBuilder> {
     final _$result = _$v ??
         new _$Weather._(
             id: BuiltValueNullFieldError.checkNotNull(id, 'Weather', 'id'),
-            main: BuiltValueNullFieldError.checkNotNull(main, 'Weather', 'main'),
-            description: BuiltValueNullFieldError.checkNotNull(description, 'Weather', 'description'),
-            icon: BuiltValueNullFieldError.checkNotNull(icon, 'Weather', 'icon'));
+            main:
+                BuiltValueNullFieldError.checkNotNull(main, 'Weather', 'main'),
+            description: BuiltValueNullFieldError.checkNotNull(
+                description, 'Weather', 'description'),
+            icon:
+                BuiltValueNullFieldError.checkNotNull(icon, 'Weather', 'icon'));
     replace(_$result);
     return _$result;
   }

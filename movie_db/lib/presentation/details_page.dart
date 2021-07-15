@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:movie_db/container/error_container.dart';
 import 'package:movie_db/container/selected_movie_container.dart';
-import 'package:movie_db/models/movie.dart';
+import 'package:movie_db/models/index.dart';
 
 class MovieDetailsPage extends StatelessWidget {
   const MovieDetailsPage({Key? key}) : super(key: key);

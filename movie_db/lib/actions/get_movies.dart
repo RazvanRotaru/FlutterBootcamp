@@ -1,27 +1,16 @@
-import 'package:movie_db/models/movie.dart';
+part of actions;
 
-class GetMoviesAction {}
+@freezed
+class GetMoviesAction with _$GetMoviesAction implements AppAction {
+  const factory GetMoviesAction() = GetMoviesActionStart;
 
-class GetMoviesResponse {}
+  const factory GetMoviesAction.successful({
+    required List<Movie> movies,
+  }) = GetMoviesActionSuccessful;
 
-class GetMoviesSuccessful extends GetMoviesResponse {
-  GetMoviesSuccessful(this.movies);
-
-  final List<Movie> movies;
-
-  @override
-  String toString() {
-    return 'GetMoviesSuccessful{movies: ${movies.map((Movie elm) => elm.title)}}';
-  }
-}
-
-class GetMoviesError extends GetMoviesResponse {
-  GetMoviesError(this.err);
-
-  final Object err;
-
-  @override
-  String toString() {
-    return 'GetMoviesError{err: $err}';
-  }
+  @Implements(ErrorAction)
+  const factory GetMoviesAction.error({
+    required Object error,
+    required StackTrace stackTrace,
+  }) = GetMoviesActionError;
 }
