@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:movie_db/models/movie.dart';
+import 'package:movie_db/models/index.dart';
 
 class MovieApi {
   MovieApi({this.url = 'https://yts.mx/api/v2'}) : client = Client();

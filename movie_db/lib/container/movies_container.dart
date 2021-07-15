@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:movie_db/models/app_state.dart';
-import 'package:movie_db/models/movie.dart';
+import 'package:movie_db/models/index.dart';
 import 'package:redux/redux.dart';
 
 class MoviesContainer extends StatelessWidget {

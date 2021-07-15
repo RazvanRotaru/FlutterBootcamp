@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:movie_db/actions/get_movies.dart';
-import 'package:movie_db/actions/reload_movies.dart';
-import 'package:movie_db/actions/select_movie.dart';
+import 'package:movie_db/actions/index.dart';
 import 'package:movie_db/container/error_container.dart';
 import 'package:movie_db/container/loading_container.dart';
 import 'package:movie_db/container/movies_container.dart';
-import 'package:movie_db/models/app_state.dart';
-import 'package:movie_db/models/movie.dart';
+import 'package:movie_db/models/index.dart';
 import 'package:redux/redux.dart';
 
 class HomePage extends StatefulWidget {
@@ -39,20 +36,20 @@ class _HomePageState extends State<HomePage> {
     final double dy = scrollController.position.maxScrollExtent - scrollController.offset;
 
     if (dy < 4 * elementHeight && !isLoading) {
-      store.dispatch(GetMoviesAction());
+      store.dispatch(const GetMoviesAction());
     }
   }
 
   void _refresh() {
     final Store<AppState> store = StoreProvider.of<AppState>(context);
     if (!store.state.isLoading) {
-      store.dispatch(ReloadMovies());
+      store.dispatch(ReloadMoviesAction());
     }
   }
 
   void _selectMovie(int id) {
     final Store<AppState> store = StoreProvider.of<AppState>(context);
-    store.dispatch(SelectMovie(movieId: id));
+    store.dispatch(SelectMovieAction(id: id));
     Navigator.pushNamed(context, '/movie_details');
   }
 

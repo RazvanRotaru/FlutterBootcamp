@@ -1,7 +1,7 @@
-import 'package:movie_db/actions/get_movies.dart';
+import 'package:movie_db/actions/app_actions.dart';
+import 'package:movie_db/actions/index.dart';
 import 'package:movie_db/data/movie_api.dart';
-import 'package:movie_db/models/app_state.dart';
-import 'package:movie_db/models/movie.dart';
+import 'package:movie_db/models/index.dart';
 import 'package:redux_epics/redux_epics.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -12,14 +12,18 @@ class MovieEpics {
 
   Epic<AppState> get epics {
     return combineEpics<AppState>(<Epic<AppState>>[
-        TypedEpic<AppState, GetMoviesAction>(_getMovies),
-      ]);
+      TypedEpic<AppState, GetMoviesActionStart>(_getMovies),
+    ]);
   }
 
-  Stream<GetMoviesResponse> _getMovies(Stream<GetMoviesAction> actions, EpicStore<AppState> store) {
+  Stream<AppAction> _getMovies(Stream<GetMoviesActionStart> actions, EpicStore<AppState> store) {
     return actions
-        .asyncMap((GetMoviesAction action) => _movieApi.getMovies(page: store.state.currentPage))
-        .map<GetMoviesResponse>((List<Movie> movies) => GetMoviesSuccessful(movies))
-        .onErrorReturnWith((Object error, StackTrace stackTrace) => GetMoviesError(error));
+        .asyncMap((GetMoviesActionStart action) => _movieApi.getMovies(page: store.state.currentPage))
+        .map((List<Movie> movies) => GetMoviesAction.successful(movies: movies))
+        .onErrorReturnWith(
+      (Object error, StackTrace stackTrace) {
+        return GetMoviesAction.error(error: error, stackTrace: stackTrace);
+      },
+    );
   }
 }

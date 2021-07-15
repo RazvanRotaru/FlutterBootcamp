@@ -1,9 +1,10 @@
-import 'dart:math';
+part of actions;
 
-class ReloadMovies {
-  static final Random random = Random();
+@freezed
+class ReloadMoviesAction with _$ReloadMoviesAction implements AppAction {
+  factory ReloadMoviesAction() = ReloadMoviesAction$;
 
-  int get randomPage {
-    return random.nextInt(100) + 1;
-  }
+  ReloadMoviesAction._();
+
+  int get randomPage => Random().nextInt(100) + 1;
 }

@@ -1,15 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:movie_db/actions/get_movies.dart';
-import 'package:movie_db/data/movie_api.dart';
-import 'package:movie_db/epics/movie_epic.dart';
-import 'package:movie_db/models/app_state.dart';
-import 'package:movie_db/presentation/details_page.dart';
-import 'package:movie_db/presentation/home_page.dart';
-import 'package:movie_db/reducer/reducer.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
+
+import 'actions/index.dart';
+import 'data/movie_api.dart';
+import 'epics/movie_epic.dart';
+import 'models/index.dart';
+import 'presentation/details_page.dart';
+import 'presentation/home_page.dart';
+import 'reducer/reducer.dart';
 
 void main() {
   final MovieEpics movieEpic = MovieEpics(api: MovieApi());
@@ -22,7 +23,7 @@ void main() {
     ],
   );
 
-  store.dispatch(GetMoviesAction());
+  store.dispatch(const GetMoviesAction());
   runApp(MyApp(
     store: store,
   ));
