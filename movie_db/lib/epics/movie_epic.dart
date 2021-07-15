@@ -10,9 +10,11 @@ class MovieEpics {
 
   final MovieApi _movieApi;
 
-  Epic<AppState> get epics => combineEpics<AppState>(<Epic<AppState>>[
+  Epic<AppState> get epics {
+    return combineEpics<AppState>(<Epic<AppState>>[
         TypedEpic<AppState, GetMoviesAction>(_getMovies),
       ]);
+  }
 
   Stream<GetMoviesResponse> _getMovies(Stream<GetMoviesAction> actions, EpicStore<AppState> store) {
     return actions

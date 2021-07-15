@@ -1,27 +1,16 @@
-import 'package:weather_app/models/location.dart';
+part of actions;
 
-class GetLocationAction {}
+@freezed
+class GetLocationAction with _$GetLocationAction implements AppAction {
+  const factory GetLocationAction() = GetLocationActionStart;
 
-class GetLocationResponse {}
+  const factory GetLocationAction.successful({
+    required Location location,
+  }) = GetLocationActionSuccessful;
 
-class GetLocationSuccessful extends GetLocationResponse {
-  GetLocationSuccessful(this.location);
-
-  final Location location;
-
-  @override
-  String toString() {
-    return 'GetLocationSuccessful{location: $location}';
-  }
-}
-
-class GetLocationError extends GetLocationResponse {
-  GetLocationError(this.error);
-
-  final Object error;
-
-  @override
-  String toString() {
-    return 'GetLocationError{error: $error}';
-  }
+  @Implements(ErrorAction)
+  const factory GetLocationAction.error({
+    required Object error,
+    required StackTrace stackTrace,
+  }) = GetLocationActionError;
 }

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-import 'package:weather_app/actions/get_current_weather.dart';
-import 'package:weather_app/actions/get_location.dart';
-import 'package:weather_app/models/app_state.dart';
-import 'package:weather_app/view/page_scaffold.dart';
+import 'package:weather_app/actions/index.dart';
+import 'package:weather_app/models/index.dart';
+
+import 'page_scaffold.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
           MaterialButton(
             onPressed: () {
               final Store<AppState> store = StoreProvider.of<AppState>(context);
-              store.dispatch(GetLocationAction());
+              store.dispatch(const GetLocationActionStart());
               Navigator.pushNamed(context, '/location');
             },
             child: const Text('Get Location'),
@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
           MaterialButton(
             onPressed: () {
               final Store<AppState> store = StoreProvider.of<AppState>(context);
-              store.dispatch(GetCurrentWeatherAction());
+              store.dispatch(const GetCurrentWeatherActionStart());
               Navigator.pushNamed(context, '/weather');
             },
             child: const Text('Get Weather'),

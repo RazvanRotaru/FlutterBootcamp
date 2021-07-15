@@ -1,8 +1,4 @@
-import 'package:built_value/built_value.dart';
-import 'package:weather_app/models/current_weather.dart';
-import 'package:weather_app/models/location.dart';
-
-part 'app_state.g.dart';
+part of models;
 
 abstract class AppState implements Built<AppState, AppStateBuilder> {
   factory AppState() {
@@ -12,22 +8,6 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   }
 
   AppState._();
-
-  // String? get country;
-  //
-  // String? get city;
-  //
-  // num? get lat;
-  //
-  // num? get lon;
-  //
-  // String? get timezone;
-  //
-  // num? get temperature;
-  //
-  // num? get humidity;
-  //
-  // num? get windSpeed;
 
   Location? get location;
 

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 import 'package:weather_app/data/http_client.dart';
-import 'package:weather_app/models/current_weather.dart';
+import 'package:weather_app/models/index.dart';
 import 'package:weather_app/secrets.dart';
 
 class WeatherApi {

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/container/loading_container.dart';
 import 'package:weather_app/container/location_container.dart';
-import 'package:weather_app/models/location.dart';
-import 'package:weather_app/view/page_scaffold.dart';
+import 'package:weather_app/models/index.dart';
+
+import 'page_scaffold.dart';
 
 class LocationPage extends StatelessWidget {
   const LocationPage({Key? key}) : super(key: key);

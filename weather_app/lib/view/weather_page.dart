@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/container/loading_container.dart';
 import 'package:weather_app/container/weather_container.dart';
-import 'package:weather_app/models/current_weather.dart';
-import 'package:weather_app/view/page_scaffold.dart';
+import 'package:weather_app/models/index.dart';
+
+import 'page_scaffold.dart';
 
 class WeatherPage extends StatelessWidget {
   const WeatherPage({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class WeatherPage extends StatelessWidget {
                 return const Center(child: CircularProgressIndicator());
               }
               return weather == null
-                  ? const Center(child: Text('ce e null weather'))
+                  ? Center(child: Text('ce e $weather weather'))
                   : Column(
                       children: <Widget>[
                         Text('${weather.temp} degrees'),

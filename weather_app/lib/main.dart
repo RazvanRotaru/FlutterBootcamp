@@ -3,17 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
-import 'package:weather_app/actions/get_location.dart';
-import 'package:weather_app/data/location_api.dart';
-import 'package:weather_app/data/weather_api.dart';
-import 'package:weather_app/epics/location_epic.dart';
-import 'package:weather_app/redux/redux.dart';
-import 'package:weather_app/view/home_page.dart';
-import 'package:weather_app/view/location_page.dart';
 import 'package:weather_app/view/weather_page.dart';
 
+import 'data/location_api.dart';
+import 'data/weather_api.dart';
+import 'epics/location_epic.dart';
 import 'epics/weather_epic.dart';
-import 'models/app_state.dart';
+import 'models/index.dart';
+import 'reducer/reducer.dart';
+import 'view/home_page.dart';
+import 'view/location_page.dart';
 
 void main() {
   final LocationEpic locationEpic = LocationEpic(api: LocationApi());
@@ -28,7 +27,6 @@ void main() {
     ],
   );
 
-  store.dispatch(GetLocationAction());
   runApp(MyApp(
     store: store,
   ));

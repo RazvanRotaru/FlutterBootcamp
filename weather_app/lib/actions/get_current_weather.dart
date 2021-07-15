@@ -1,27 +1,16 @@
-import 'package:weather_app/models/current_weather.dart';
+part of actions;
 
-class GetCurrentWeatherAction {}
+@freezed
+class GetCurrentWeatherAction with _$GetCurrentWeatherAction implements AppAction {
+  const factory GetCurrentWeatherAction() = GetCurrentWeatherActionStart;
 
-class GetCurrentWeatherResponse {}
+  const factory GetCurrentWeatherAction.successful({
+    required CurrentWeather weather,
+  }) = GetCurrentWeatherActionSuccessful;
 
-class GetCurrentWeatherSuccessful extends GetCurrentWeatherResponse {
-  GetCurrentWeatherSuccessful(this.weather);
-
-  final CurrentWeather weather;
-
-  @override
-  String toString() {
-    return 'GetCurrentWeatherSuccessful{weather: $weather}';
-  }
-}
-
-class GetCurrentWeatherError extends GetCurrentWeatherResponse {
-  GetCurrentWeatherError(this.error);
-
-  final Object error;
-
-  @override
-  String toString() {
-    return 'GetCurrentWeatherError{error: $error}';
-  }
+  @Implements(ErrorAction)
+  const factory GetCurrentWeatherAction.error({
+    required Object error,
+    required StackTrace stackTrace,
+  }) = GetCurrentWeatherActionError;
 }

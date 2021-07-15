@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-import 'package:weather_app/actions/get_current_weather.dart';
-import 'package:weather_app/actions/get_location.dart';
-import 'package:weather_app/models/app_state.dart';
+import 'package:weather_app/actions/index.dart';
+import 'package:weather_app/models/index.dart';
 
 class PageScaffold extends StatelessWidget {
   const PageScaffold({Key? key, required this.body, required this.index, required this.title}) : super(key: key);
@@ -20,8 +19,8 @@ class PageScaffold extends StatelessWidget {
 
   static List<dynamic> actions = <dynamic>[
     Object(),
-    GetLocationAction(),
-    GetCurrentWeatherAction(),
+    const GetLocationActionStart(),
+    const GetCurrentWeatherActionStart(),
   ];
 
   @override

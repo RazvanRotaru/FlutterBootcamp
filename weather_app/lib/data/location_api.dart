@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 import 'package:weather_app/data/http_client.dart';
-import 'package:weather_app/models/location.dart';
+import 'package:weather_app/models/index.dart';
 
 class LocationApi {
   LocationApi({this.url = 'http://ip-api.com/json/?fields=58367'}) : _client = HttpClient.global;
