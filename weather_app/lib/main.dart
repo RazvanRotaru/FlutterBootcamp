@@ -27,7 +27,7 @@ void main() {
     ],
   );
 
-  runApp(MyApp(store: store,));
+  runApp(MyApp(store: store));
 }
 
 class MyApp extends StatelessWidget {
