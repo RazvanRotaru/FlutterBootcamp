@@ -18,6 +18,9 @@
       <excludeFolder url="file://$MODULE_DIR$/weather_app/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/weather_app/build" />
       <excludeFolder url="file://$MODULE_DIR$/weather_app/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/photo_app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/photo_app/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/photo_app/.pub" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
