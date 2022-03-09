@@ -1,0 +1,295 @@
+Flutter shortcuts
+
+Ctrl+P - shows necessary arguments
+
+Ctrl+Alt+O -removes unused imports
+
+Alt+Insert - generate methods in class
+
+Shift+F6 - rename variable
+
+stless + Alt+Enter
+stfull + Alt+Enter
+	- how to build statefull widget:
+		- define changable variable
+		- use variable in build function
+		- modify variable in setState
+inh + Alt+Enter 
+	- InheritedWidget
+
+
+Ctrl + Alt + R - reformat code
+button style -> style: <button_type>.styleFor(..)
+
+Alt + Insert -> generate inherited methods 
+
+Ctrl + Alt + W -> extract widget
+Ctrl + Alt + V -> extract variable
+Ctrl + Alt + M -> extract method
+
+Git Commit menu - GroupBy directory
+
+/////
+usefull widgets:
+	- NavigationRail
+
+	- Padding
+	- Visibility
+	- Alert Dialog
+	- TextFormField (must be inside a Form)
+		- keyboardType!! (TextInputType)
+		- obscureText
+	- Form 
+		- validate
+	- Builder
+
+	- ListView.builder
+	- GridView.builder
+/////
+usefull info:
+	- dynamic x; x.runtimeType
+	- use list x.foreach() only with predefined functions
+
+	- reflection
+	- semantic versioning (major.minor.patch)
+/////
+
+
+Paramenter types:
+	- required positioned
+	- [optional positioned]
+	- {optional named}
+		- keyword: required
+
+
+Flutter code quality:
+	- fromat all files
+		terminal: flutter format -l 120 .
+	- Ctrl + K (commit screen) + Click Click (show diff)
+	- get analysis_options.yaml from github.com/flutter/flutter for a better code quality analysis
+
+	- create github workflow (CICD - continous integration, continous deployment)
+		create .github directory
+		in .github create workflows directory
+			create <something>.yaml file 
+				steps (google "gihub actions <step>") 
+					1) checkout code 
+					2) install flutter
+					3) setup project
+					4) format code
+
+
+				working-directory - use other directory instead of root
+				path <dir>/*/** - only run workflow if files in given path are changed
+
+				or
+
+				strategy:
+					matrix:
+						app: [<dir1>, <dir2>] - will run workflow on all directories
+				working-directory: ${{ matrix.app }}
+
+Animations 
+	- AnimatedContainer
+		standard duration = 300ms
+
+	- implicit
+		- define variabile
+		- use variable in build
+		- modify variable on interaction with setState
+
+		! loses state 	- save state in parent (parent has to be Stateful)
+						- update parent state list using a function given as parameter to the constructor
+
+	- explicit
+		= custom animations
+		1) define "late AnimationController _controller"
+		2) in initState
+			initialize _controller with vsync: this, duration
+			in addListener() use setState({}) (empty) 
+		3) with SingleTickerProviderStateMixin
+		4) modify value with _controller.forward() / backward(), check isCompleted
+		5) use _controller.value for animations
+
+Network calls:
+	- add  http pubspec.yaml
+	- import http 
+	- create get function
+		- Example- movies
+			- get(uri).then(sth)
+
+			- careare functie async/await
+				- modificam semantura functiei ( adaugam async )
+				- return_type -> Future<return_type>
+				- final Response res = await get(uri)
+				- extract sth from .then()
+
+			- async/await vs then - readability
+
+
+- Create Models
+	- dev_dependencies
+		+ build_runner
+		+ built_value_generator
+	- dependecies
+		+ built_value
+		+ built_collection
+
+	- create models/movie.dart
+		- part 'movie.g.dart' (g = generate)
+		- abstract class Movie implements Buit<Movie, MovieBuilder> {
+			factory Movie([void Function(MovieBuilder) updates]) = _$Movie;
+			factory Movie.fromJson(Map<String, dynamic> json) {
+				return serailizers.deserializeWith(serializer, json) as Movie;
+			}
+
+			Movie._();
+
+			static Serializer<Movie> get serializer => _$movieSerializer;
+
+			Map<string, dynamic> get json => serializers.serializeWith(serializer, this) as Map<String, dynamic>
+		}
+
+	- console: flutter pub  run build_runner watch --delete-conflicting-outputs
+	- add all fields to serialize in Movie class
+	- for non_camel_case @BuiltValueField(wireName: "non_camel_case") and modify name in camelCase
+
+	- create models/serializers.dart
+
+		- part 'serializers.g.dart'
+		- @SerializersFor(<Type>[Movie])
+		- Serializers serializers = (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin()));
+
+
+Flutter Enchacement Suite
+	- auto selects latest package version
+
+Redux = state management solution
+State Management - assures the state is accesible from everywhere
+
+
+State Management Steps:
+	1 	define models (movie.dart) (and state (app_state.dart))
+	2 	define API(data) (movies_api.dart)
+	3  	create actions from API
+		- classes for every action
+	4	call actions from middleware
+		- next(action) 
+			- passes the action to reducer
+			- if not implementated the action is by default passed to the reducer 
+		- store.dispatch(some other action)
+	5	reducer
+		- action + state => state
+
+		++ 
+
+	for UI:
+
+	6 create containers 
+		- converter - exposes a part of the model
+		- builder 	- rebuilds the widget	7 create presentation (actual UI)
+
+
+
+Analysis options 
+	- exlcude **.g.dart
+
+
+Redux epics:
+	Action in ---async---> Action out
+
+	epic ~ middleware 
+	epic (functional programming)
+	middleware (imperative programming) 
+
+	- pubspec.yaml:
+		-dependencies
+			redux_epics
+		-dependencies_override
+			rxdart
+
+	- epics folder
+		- app_epics.dart
+			Epic<AppState> get epics =>
+				combineEpics<AppState>(<Epic<AppState>>[
+					TypedEpic<AppState, GetMovies>(_getMovies),
+				]);
+
+			Stream<Object> _getMovies(Stream<GetMovies> actions, EpicStore<AppState> store) {
+				return actions
+					.asyncMap((GetMovies action) => _moviesApi.getMovies(store.state.page))
+					.map<Object>(List<Movie> movies) => GetMoviesSuccesful(movies))
+					.onErrorReturnWith((Object error, StackTrace stackTrace) => GetMoviesError(error));
+			}
+
+			- interesting operators on Stream<T>
+				- debaunceTime - 
+				- distinct -
+
+
+			- interesting operators on List<T>
+				- where
+				- map
+				- expand - expands an element into a list
+				- toList
+
+		- main.dart
+			- AppMiddleawre => AppEpics
+			- store.middleware = [EpicMiddleware<AppState>(epic.epics)]
+
+
+
+	-pubspec.yaml
+		-dev_dependencies:
+			- freezed
+		-dependencies:
+			- freezed_annotation
+
+
+	- get_movies.dart
+
+		part 'get_movies.freezed.dart'
+
+
+		@freezed
+		class GetMovies with _$GetMovies implements AppAction {
+			const factory GetMovies() = GetMovie$;
+
+			const factory GetMovies.successful(List<Movie> movie) ...
+		}
+
+	- index.dart
+
+		abstract class AppAction {}
+
+		abstract class ErrorAction implements AppAction {
+			Object get error;
+			StackTrace get stackTrace;
+		}
+
+- Optimistic Action = presupune ca actiunea se va inchiea cu succes
+	- in reducer 	- actiunea de START modifica stateul (normal cea de SUCCESSFUL)
+					- actiunea de ERROR modifica inapoi stateul (normal nu face nimic)
+
+
+- Pending Action
+	- uses pendingId
+		- actiunea de START adauga pendingId in state
+		- actiunea de DONE (ERROR / SUCCESSFUL) scoate pendingId din state
+
+
+	index.dart
+
+		library <something>;
+
+		when importing UI components hide their Builder
+
+			e.i. import '.../cupertion.dart' hide Builder!!!!!;
+
+? nu mareste dimesniunea executabilului foarte mult?
+	nop, part face ca totul sa devina un singur fisier nu invers
+	but still..............
+
+
+!!!! Never dispatch/call actions in build() 
+	build is called whenever the layout is changed
